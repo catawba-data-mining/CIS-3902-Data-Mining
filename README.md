@@ -47,9 +47,79 @@ UNCC 7. [ Additional Content: Association Rules for Machine Learning](#associati
 
 <a name="chap2"></a>
 ## Chapter 2: The Basics of Python and R
-<p>Chapter 2</p>
-[Return to TOC](#toc)
-<p></p>
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap3"></a>
+## Chapter 3: Data Preparation
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap4"></a>
+## Chapter 4: Exploratory Data Analysis
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap5"></a>
+## Chapter 5: Preparing to Model the Data
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap6"></a>
+## Chapter 6: Decision Trees
+[ back to Table of Contents](#toc)
+<br>
+
+<a name="chap7"></a>
+## Chapter 7: Model Evaluation
+[ back to Table of Contents](#toc)
+<br>
+  
+  
+<a name="chap8"></a>
+## Chapter 8: Naive Bayes
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap9"></a>
+## Chapter 9: Neural Networks
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap10"></a>
+## Chapter 10: Clustering
+[ back to Table of Contents](#toc)
+<br>
+
+<a name="chap11"></a>
+## Chapter 11: Regression Modeling
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap12"></a>
+## Chapter 12: Dimension Modeling
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap13"></a>
+## Chapter 1: Generalized Linear Models
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap14"></a>
+## Chapter 14: Association Rules
+[ back to Table of Contents](#toc)
+<br>
+
 
 <a name="chapter6"></a>
 ## Chapter 6:  Bayes Classifier on Cloud Dataproc
