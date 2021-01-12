@@ -39,9 +39,10 @@ UNCC 6. [ Appendix A: Considerations for Sensitive Data within Machine Learning 
 <br>
 UNCC 7. [ Additional Content: Association Rules for Machine Learning](#association)
 <br>
+
 <a name="chap1"></a>
 ## Chapter 1: Introduction to Data Science
-[ Return to TOC ](#toc)
+[ back to Table of Contents](#toc)
 <br>
 
 <a name="chap2"></a>
