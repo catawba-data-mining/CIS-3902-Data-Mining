@@ -41,7 +41,7 @@ UNCC 7. [ Additional Content: Association Rules for Machine Learning](#associati
 <br>
 <a name="chap1"></a>
 ## Chapter 1: Introduction to Data Science
-[Return to TOC](#toc)
+[ Return to TOC ](#toc)
 <br>
 
 <a name="chap2"></a>
