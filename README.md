@@ -1,18 +1,45 @@
 # Data-Mining
-Introductory Data Mining Class
-
-
+These resources supplement an introductory course in Data Mining and are suitable for both the undergraduate and graduate level. Students need a background in Python and Statistics in order to be successful in the class.  For students that need a review of either Python or Statistics, please use the resources provided in "Preparation for Class: A Review of Python and Statistics" or use resources of your choosing. The required text for this class is Larose and Larose:  Data Science Using Python and R 2019 Wiley.
 
 <a name="toc"></a>
 ## Table of Contents
 
-1. [ Chapter 6: Bayes Classifier on Cloud Dataproc ](#chapter6)
-2. [ Chapter 7: Machine Learning: Logistic Regression on Spark](#chapter7)
-3. [ Chapter 8: Time Windowed Aggregate Features](#chapter8)
-4. [ Chapter 9: Machine Learning Classifier Using Tensorflow](#chapter9)
-5. [ Chapter 10: Real-Time Machine Learning](#chapter10)
-6. [ Appendix A: Considerations for Sensitive Data within Machine Learning Dataasets](#appendixa)
-7. [ Additional Content: Association Rules for Machine Learning](#association)
+[Preparation for Class:  A Review of Python and Statistics](#review)
+[Preparation for Class:  Installing Anaconda and Jupyter](#installation)
+[Preparation for Class:  Working in the Cloud - Using Colab](#colab)
+1. [ Chapter 1: Introduction to Data Science ](#chap1)
+2. [ Chapter 2: The Basics of Python and R](#chap2)
+3. [ Chapter 3: Data Preparation](#chap3)
+4. [ Chapter 4: Exploratory Data Analysis](#chap4)
+5. [ Chapter 5: Preparing to Model the Data](#chap5)
+6. [ Chapter 6: Decision Trees](#chap6)
+7. [ Chapter 7: Model Evaluation](#chap7)
+8. [ Chapter 8: Naive Bayes](#chap8)
+9. [ Chapter 9: Neural Networks](#chap9)
+10. [ Chapter 10: Clustering](#chap10)
+11. [ Chapter 11: Regression Modeling](#chap11)
+12. [ Chapter 12: Dimension Modeling](#chap12)
+13. [ Chapter 13: Generalized Linear Models](#chap13)
+14. [ Chapter 14: Association Rules](#chap14)
+UNCC 1. [ Chapter 6: Bayes Classifier on Cloud Dataproc ](#chapter6)
+UNCC 2. [ Chapter 7: Machine Learning: Logistic Regression on Spark](#chapter7)
+UNCC 3. [ Chapter 8: Time Windowed Aggregate Features](#chapter8)
+UNCC 4. [ Chapter 9: Machine Learning Classifier Using Tensorflow](#chapter9)
+UNCC 5. [ Chapter 10: Real-Time Machine Learning](#chapter10)
+UNCC 6. [ Appendix A: Considerations for Sensitive Data within Machine Learning Dataasets](#appendixa)
+UNCC 7. [ Additional Content: Association Rules for Machine Learning](#association)
+
+<a name="chap1"></a>
+## Chapter 1: Introduction to Data Science
+<p>Chapter 1</p>
+[Return to TOC](#toc)
+<p></p>
+
+<a name="chap2"></a>
+## Chapter 2: The Basics of Python and R
+<p>Chapter 2</p>
+[Return to TOC](#toc)
+<p></p>
 
 <a name="chapter6"></a>
 ## Chapter 6:  Bayes Classifier on Cloud Dataproc
