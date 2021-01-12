@@ -110,7 +110,7 @@ UNCC 7. [ Additional Content: Association Rules for Machine Learning](#associati
 
 
 <a name="chap13"></a>
-## Chapter 1: Generalized Linear Models
+## Chapter 13: Generalized Linear Models
 [ back to Table of Contents](#toc)
 <br>
 
