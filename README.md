@@ -5,8 +5,11 @@ These resources supplement an introductory course in Data Mining and are suitabl
 ## Table of Contents
 
 [Preparation for Class:  A Review of Python and Statistics](#review)
+<br>
 [Preparation for Class:  Installing Anaconda and Jupyter](#installation)
+<br>
 [Preparation for Class:  Working in the Cloud - Using Colab](#colab)
+<br>
 1. [ Chapter 1: Introduction to Data Science ](#chap1)
 2. [ Chapter 2: The Basics of Python and R](#chap2)
 3. [ Chapter 3: Data Preparation](#chap3)
