@@ -24,19 +24,25 @@ These resources supplement an introductory course in Data Mining and are suitabl
 12. [ Chapter 12: Dimension Modeling](#chap12)
 13. [ Chapter 13: Generalized Linear Models](#chap13)
 14. [ Chapter 14: Association Rules](#chap14)
+<br>
 UNCC 1. [ Chapter 6: Bayes Classifier on Cloud Dataproc ](#chapter6)
+<br>
 UNCC 2. [ Chapter 7: Machine Learning: Logistic Regression on Spark](#chapter7)
+<br>
 UNCC 3. [ Chapter 8: Time Windowed Aggregate Features](#chapter8)
+<br>
 UNCC 4. [ Chapter 9: Machine Learning Classifier Using Tensorflow](#chapter9)
+<br>
 UNCC 5. [ Chapter 10: Real-Time Machine Learning](#chapter10)
+<br>
 UNCC 6. [ Appendix A: Considerations for Sensitive Data within Machine Learning Dataasets](#appendixa)
+<br>
 UNCC 7. [ Additional Content: Association Rules for Machine Learning](#association)
-
+<br>
 <a name="chap1"></a>
 ## Chapter 1: Introduction to Data Science
-<p>Chapter 1</p>
 [Return to TOC](#toc)
-<p></p>
+<br>
 
 <a name="chap2"></a>
 ## Chapter 2: The Basics of Python and R
