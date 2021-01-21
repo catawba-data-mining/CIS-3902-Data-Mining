@@ -21,87 +21,72 @@ https://github.com/data-8/materials-sp20
 <br>
 [Preparation for Class:  Working in the Cloud - Using Colab](#colab)
 <br>
-1. [ Chapter 1: Introduction to Data Science ](#chap1)
-2. [ Chapter 2: The Basics of Python and R](#chap2)
-3. [ Chapter 3: Data Preparation](#chap3)
-4. [ Chapter 4: Exploratory Data Analysis](#chap4)
-5. [ Chapter 5: Preparing to Model the Data](#chap5)
-6. [ Chapter 6: Decision Trees](#chap6)
-7. [ Chapter 7: Model Evaluation](#chap7)
-8. [ Chapter 8: Naive Bayes](#chap8)
-9. [ Chapter 9: Neural Networks](#chap9)
+1. [ Chapter 1: The Data Science Lifecycle ](#chap1)
+2. [ Chapter 2: Rectangular Data ](#chap2)
+3. [ Chapter 3: Preparing and Exploring Data  ](#chap3)
+4. [ Chapter 4: Other Data Sources](#chap4)
+5. [ Chapter 5: Linear Modeling](#chap5)
+6. [ Chapter 6: Multiple Linear Modeling](#chap6)
+7. [ Chapter 7: Classification](#chap7)
+8. [ Chapter 8: Decision Trees and Random Forest](#chap8)
+9. [ Chapter 9: Dimensionality Reduction and PCA ](#chap9)
 10. [ Chapter 10: Clustering](#chap10)
-11. [ Chapter 11: Regression Modeling](#chap11)
-12. [ Chapter 12: Dimension Modeling](#chap12)
-13. [ Chapter 13: Generalized Linear Models](#chap13)
-14. [ Chapter 14: Association Rules](#chap14)
-<br>
-UNCC 1. [ Chapter 6: Bayes Classifier on Cloud Dataproc ](#chapter6)
-<br>
-UNCC 2. [ Chapter 7: Machine Learning: Logistic Regression on Spark](#chapter7)
-<br>
-UNCC 3. [ Chapter 8: Time Windowed Aggregate Features](#chapter8)
-<br>
-UNCC 4. [ Chapter 9: Machine Learning Classifier Using Tensorflow](#chapter9)
-<br>
-UNCC 5. [ Chapter 10: Real-Time Machine Learning](#chapter10)
-<br>
-UNCC 6. [ Appendix A: Considerations for Sensitive Data within Machine Learning Dataasets](#appendixa)
-<br>
-UNCC 7. [ Additional Content: Association Rules for Machine Learning](#association)
+11. [ Chapter 11:  Association Rules](#chap11)
+12. [ Chapter 12: Replicability and Bias](#chap12)
+13. [ Chapter 13: Cloud Resources](#chap13)
+14. [ Chapter 14: Other](#chap14)
 <br>
 
 <a name="chap1"></a>
-## Chapter 1: Introduction to Data Science
+## Chapter 1: The Data Science Lifecycle including Python and Jupyter Notebook review
 [ back to Table of Contents](#toc)
 <br>
 
 <a name="chap2"></a>
-## Chapter 2: The Basics of Python and R
+## Chapter 2: Rectangular Data
 [ back to Table of Contents](#toc)
 <br>
 
 
 <a name="chap3"></a>
-## Chapter 3: Data Preparation
+## Chapter 3: Preparing and Exploring Data
 [ back to Table of Contents](#toc)
 <br>
 
 
 <a name="chap4"></a>
-## Chapter 4: Exploratory Data Analysis
+## Chapter 4: Other Data Sources
 [ back to Table of Contents](#toc)
 <br>
 
 
 <a name="chap5"></a>
-## Chapter 5: Preparing to Model the Data
+## Chapter 5: Linear Modeling
 [ back to Table of Contents](#toc)
 <br>
 
 
 <a name="chap6"></a>
-## Chapter 6: Decision Trees
+## Chapter 6: Multiple Linear Modeling
 [ back to Table of Contents](#toc)
 <br>
 
 <a name="chap7"></a>
-## Chapter 7: Model Evaluation
+## Chapter 7: Classification
 [ back to Table of Contents](#toc)
 <br>
   
   
 <a name="chap8"></a>
-## Chapter 8: Naive Bayes
+## Chapter 8: Decision Trees and Random Forest
 [ back to Table of Contents](#toc)
 <br>
 
 
 <a name="chap9"></a>
-## Chapter 9: Neural Networks
+## Chapter 9: Dimensionality Reduction and PCA
 [ back to Table of Contents](#toc)
 <br>
-
 
 <a name="chap10"></a>
 ## Chapter 10: Clustering
@@ -109,108 +94,9 @@ UNCC 7. [ Additional Content: Association Rules for Machine Learning](#associati
 <br>
 
 <a name="chap11"></a>
-## Chapter 11: Regression Modeling
-[ back to Table of Contents](#toc)
-<br>
+## Chapter 11: Association Rules
 
-
-<a name="chap12"></a>
-## Chapter 12: Dimension Modeling
-[ back to Table of Contents](#toc)
-<br>
-
-
-<a name="chap13"></a>
-## Chapter 13: Generalized Linear Models
-[ back to Table of Contents](#toc)
-<br>
-
-
-<a name="chap14"></a>
-## Chapter 14: Association Rules
-[ back to Table of Contents](#toc)
-<br>
-
-
-<a name="chapter6"></a>
-## Chapter 6:  Bayes Classifier on Cloud Dataproc
-
-<p>Google Cloud Dataproc makes it convenient to spin up a Hadoop cluster that is capable of running MapReduce, Pig, Hive, and Spark.  In this chapter, we create3 a Bayesian model to predict the likely arrival delay of a flight.  We will use an integrated workflow that involves Bigquery, Spark SQL, and Apache Pig.  A Bayesian model will be used to predict the likely arrival delay of a flight<p>
-  <p>Along the way we we learn how to create, resize, and delete job-specific Hadoop clusters using Cloud Dataproc.</p>
-  
-### A Gentle Introduction to Bayes Theorem for Machine Learning
-#### Bayes Theorem
-<p>Classification is a predictive modeling problem that involves assigning a label to a given new data sample input. For our case study, we want to know if our flight will be late or not based on what we know at the time we can make a decision to cancel</p>
-
-<p>Analytics Vidhya has an excellent introduction to Bayes and it does not avoid the statistics behind the theorem.  As data scientists, we need to know the statistics behind our models but there is no reason to make it overly complicated!  I think you will like this article on Analytics Vidhya:</p>
-<a href="https://www.analyticsvidhya.com/blog/2019/06/introduction-powerful-bayes-theorem-data-science/">An Introduction to the Powerful Bayes Theorem for Data Science Professionals</a><p></p>
-<p>Here is a good video explaining Naive Bayes and the Bayes Theorem:</p>
-<a href="https://youtu.be/l3dZ6ZNFjo0">Naive Bayes Classifier</a>
-
-#### Python Example in Google Colab
-
-<p>Let's check out an example in code. Click on "Naive Bayes Notebook" to see an example of Naive Bayes in Google Colab Using Jupyter and Scikit-Learn. You can click on the Colab button to practice with the code</p>
-<p><a href="https://github.com/profunccdata/Knowledge_Based_Systems/blob/master/Naive_Bayes_Classifier_Gaussian.ipynb">
-Naive Bayes Notebook
-</a></p>
-
-#### Scikit Learn Documentation for Naive Bayes
-  <p>The sklearn.naive_bayes module implements Naive Bayes algorithms. These are supervised learning methods based on applying Bayes’ theorem with strong (naive) feature independence assumptions.</p>
-  <a href="https://scikit-learn.org/stable/modules/naive_bayes.html">Scikit Learn Naive Bayes Documentation</a><p></p>
- <p></p>
- 
-[ back to Table of Contents](#toc)
- 
-<a name="chapter7"></a>
-## Chapter 7:  Machine Learning: Logistic Regression on Spark - See Data Science on GCP
-
-<p>
-<a href="https://github.com/GoogleCloudPlatform/data-science-on-gcp/tree/master/07_sparkml_and_bqml">Chapter 7</a></p>
-<p></p>
- 
-[ back to Table of Contents](#toc)
- 
-<a name="chapter8"></a>
-## Chapter 8:  Time-Windowed Aggregate Features - See Data Science on GCP
-
-<p>
-<a href="https://github.com/GoogleCloudPlatform/data-science-on-gcp/tree/master/08_dataflow">Chapter 8</a></p>
-<p></p> 
-
-[ back to Table of Contents](#toc)
- 
-<a name="chapter9"></a>
-## Chapter 9:  Machine Learning Classifier Using Tensorflow - See Data Science on GCP
-
-<p>
-<a href="https://github.com/GoogleCloudPlatform/data-science-on-gcp/tree/master/09_cloudml">Chapter 9</a></p>
-<p></p> 
-
-[ back to Table of Contents](#toc)
- 
-<a name="chapter10"></a>
-## Chapter 10:  Real-Time Machine Learning 
-
-<p>
-<a href="https://github.com/GoogleCloudPlatform/data-science-on-gcp/tree/master/10_realtime">Chapter 10</a>
-</p>
-<p></p> 
-
-[ back to Table of Contents](#toc)
- 
-
-<a name="appendixa"></a>
-## Appendix A:  Bayes Classifier on Cloud Dataproc
-
-<p></p>
-<p></p> 
-
-[ back to Table of Contents](#toc)
-
-
-<a name="association"></a>
-
-## Additional Content: Association Rules for Machine Learning
+#### Association Rules for Machine Learning
 <p></p>
 
 ### Introducing Association Rules for Machine Learning
@@ -229,6 +115,43 @@ Naive Bayes Notebook
 <p><a href="https://github.com/profunccdata/Knowledge_Based_Systems/blob/master/Association%20Rules%20Example%20in%20Jupyter.ipynb">
 Association Rules Notebook
 </a></p>
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap12"></a>
+## Chapter 12: Replicablity and Bias
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap13"></a>
+## Chapter 13: Cloud Resources
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap14"></a>
+## Chapter 14: Other
+  
+### A Gentle Introduction to Bayes Theorem for Machine Learning
+#### Bayes Theorem
+<p>Classification is a predictive modeling problem that involves assigning a label to a given new data sample input. For our case study, we want to know if our flight will be late or not based on what we know at the time we can make a decision to cancel</p>
+
+<p>Analytics Vidhya has an excellent introduction to Bayes and it does not avoid the statistics behind the theorem.  As data scientists, we need to know the statistics behind our models but there is no reason to make it overly complicated!  I think you will like this article on Analytics Vidhya:</p>
+<a href="https://www.analyticsvidhya.com/blog/2019/06/introduction-powerful-bayes-theorem-data-science/">An Introduction to the Powerful Bayes Theorem for Data Science Professionals</a><p></p>
+<p>Here is a good video explaining Naive Bayes and the Bayes Theorem:</p>
+<a href="https://youtu.be/l3dZ6ZNFjo0">Naive Bayes Classifier</a>
+
+#### Python Example in Google Colab
+
+<p>Let's check out an example in code. Click on "Naive Bayes Notebook" to see an example of Naive Bayes in Google Colab Using Jupyter and Scikit-Learn. You can click on the Colab button to practice with the code</p>
+<p><a href="https://github.com/profunccdata/Knowledge_Based_Systems/blob/master/Naive_Bayes_Classifier_Gaussian.ipynb">
+Naive Bayes Notebook
+</a></p>
+
+
+
 
 #### Documentation for mlxtend (Machine Learning Extensions - Important Python Library)
 <p>
@@ -236,6 +159,7 @@ Association Rules Notebook
 <p></p> 
 
 [ back to Table of Contents](#toc)
+<br>
 
 
 
