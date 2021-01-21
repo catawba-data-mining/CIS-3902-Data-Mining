@@ -1,5 +1,16 @@
 # Data-Mining
-These resources supplement an introductory course in Data Mining and are suitable for both the undergraduate and graduate level. Students need a background in Python and Statistics in order to be successful in the class.  For students that need a review of either Python or Statistics, please use the resources provided in "Preparation for Class: A Review of Python and Statistics" or use resources of your choosing. The required text for this class is Larose and Larose:  Data Science Using Python and R 2019 Wiley.
+This site provides resources for an introductory course in Data Mining.  Students need a background in Python and Statistics in order to be successful in the class.  For students that need a review of either Python or Statistics, please use the resources provided in "Preparation for Class: A Review of Python and Statistics" or use resources of your choosing. 
+
+RESOURCES
+
+TEXTBOOK:  The text for the class is provided by UC Berkeley Principles and Techniques of Data Science
+http://www.textbook.ds100.org/intro.html
+
+PUBLIC REPOSITORY:  The public repository for resources for Principles and Techniques of Data Science
+https://github.com/DS-100/fa20
+
+The public repository for Data 8 (additional resources for class):
+https://github.com/data-8/materials-sp20
 
 <a name="toc"></a>
 ## Table of Contents
