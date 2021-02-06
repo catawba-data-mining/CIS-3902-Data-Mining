@@ -31,80 +31,108 @@ https://github.com/DS-100/fa20
 <br>
 [Preparation for Class:  Working in the Cloud - Using Colab](#colab)
 <br>
-1. [ Chapter 1: The Data Science Lifecycle ](#chap1)
-2. [ Chapter 2: Rectangular Data ](#chap2)
-3. [ Chapter 3: Preparing and Exploring Data  ](#chap3)
-4. [ Chapter 4: Other Data Sources](#chap4)
-5. [ Chapter 5: Linear Modeling](#chap5)
-6. [ Chapter 6: Multiple Linear Modeling](#chap6)
-7. [ Chapter 7: Classification](#chap7)
-8. [ Chapter 8: Decision Trees and Random Forest](#chap8)
-9. [ Chapter 9: Dimensionality Reduction and PCA ](#chap9)
-10. [ Chapter 10: Clustering](#chap10)
-11. [ Chapter 11:  Association Rules](#chap11)
-12. [ Chapter 12: Replicability and Bias](#chap12)
-13. [ Chapter 13: Cloud Resources](#chap13)
-14. [ Chapter 14: Other](#chap14)
+## Data 8
+1. [ Chapter 1: Data Science ](#chap1)
+2. [ Chapter 2: Causality and Experiments ](#chap2)
+3. [ Chapter 3 through 5: Python (covered in Datacamp)  ](#chap3)
+4. [ Chapter 6: Tables](#chap6)
+5. [ Chapter 7: Visualization](#chap7)
+6. [ Chapter 8: Functions and Tables](#chap8)
+7. [ Chapter 9: Randomness](#chap9)
+8. [ Chapter 10: Sampling and Empirical Distributions](#chap10)
+9. [ Chapter 11: Testing Hypotheses ](#chap11)
+10. [ Chapter 12: Comparing Two Samples](#chap12)
+11. [ Chapter 13:  Estimation](#chap13)
+12. [ Chapter 14: Why the Mean Matters](#chap14)
+13. [ Chapter 15-16: Prediction, Inference for Regression](#chap1516)
+14. [ Chapter 17-18: Classification, Updating Predictions](#chap1718)
+15. [ Association Rules and Bayes Theorem](#other)
 <br>
+## Data 100
 
 <a name="chap1"></a>
-## Chapter 1: The Data Science Lifecycle including Python and Jupyter Notebook review
+## Chapter 1: Data Science including Python and Jupyter Notebook review
 [ back to Table of Contents](#toc)
 <br>
 
 <a name="chap2"></a>
-## Chapter 2: Rectangular Data
+## Chapter 2: Causality and Experiments
 [ back to Table of Contents](#toc)
 <br>
 
 
 <a name="chap3"></a>
-## Chapter 3: Preparing and Exploring Data
-[ back to Table of Contents](#toc)
-<br>
-
-
-<a name="chap4"></a>
-## Chapter 4: Other Data Sources
-[ back to Table of Contents](#toc)
-<br>
-
-
-<a name="chap5"></a>
-## Chapter 5: Linear Modeling
+## Chapter 3: Python (3 through 5)
 [ back to Table of Contents](#toc)
 <br>
 
 
 <a name="chap6"></a>
-## Chapter 6: Multiple Linear Modeling
+## Chapter 6: Tables
 [ back to Table of Contents](#toc)
 <br>
+
 
 <a name="chap7"></a>
-## Chapter 7: Classification
-[ back to Table of Contents](#toc)
-<br>
-  
-  
-<a name="chap8"></a>
-## Chapter 8: Decision Trees and Random Forest
+## Chapter 7: Visualization
 [ back to Table of Contents](#toc)
 <br>
 
+
+<a name="chap8"></a>
+## Chapter 8: Functions and Tables
+[ back to Table of Contents](#toc)
+<br>
 
 <a name="chap9"></a>
-## Chapter 9: Dimensionality Reduction and PCA
+## Chapter 9: Randomness
+[ back to Table of Contents](#toc)
+<br>
+  
+  
+<a name="chap10"></a>
+## Chapter 10: Sampling and Empirical Distributions
 [ back to Table of Contents](#toc)
 <br>
 
-<a name="chap10"></a>
-## Chapter 10: Clustering
-[ back to Table of Contents](#toc)
-<br>
 
 <a name="chap11"></a>
-## Chapter 11: Association Rules
+## Chapter 11: Testing Hypotheses
+[ back to Table of Contents](#toc)
+<br>
+
+<a name="chap12"></a>
+## Chapter 12: Comparing Two Samples
+[ back to Table of Contents](#toc)
+<br>
+
+<a name="chap13"></a>
+## Chapter 13: Estimation
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap14"></a>
+## Chapter 14: Why the Mean Matters
+[ back to Table of Contents](#toc)
+<br>
+
+
+<a name="chap1516"></a>
+## Chapter 15-16: Prediction, Inference for Regression
+[ back to Table of Contents](#toc)
+<br>
+
+<a name="chap1718"></a>
+## Chapter 17-18: Classification, Updating Predictions
+[ back to Table of Contents](#toc)
+<br>
+
+<a name="other"></a>
+## Other
+## Association Rules and Bayes Theorem
+[ back to Table of Contents](#toc)
+<br>
 
 #### Association Rules for Machine Learning
 <p></p>
@@ -128,21 +156,6 @@ Association Rules Notebook
 [ back to Table of Contents](#toc)
 <br>
 
-
-<a name="chap12"></a>
-## Chapter 12: Replicablity and Bias
-[ back to Table of Contents](#toc)
-<br>
-
-
-<a name="chap13"></a>
-## Chapter 13: Cloud Resources
-[ back to Table of Contents](#toc)
-<br>
-
-
-<a name="chap14"></a>
-## Chapter 14: Other
   
 ### A Gentle Introduction to Bayes Theorem for Machine Learning
 #### Bayes Theorem
