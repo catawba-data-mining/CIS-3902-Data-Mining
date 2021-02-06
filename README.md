@@ -49,7 +49,6 @@ https://github.com/DS-100/fa20
 15. [ Association Rules and Bayes Theorem](#other)
 <br>
 
-## Data 100
 
 <a name="chap1"></a>
 ## Chapter 1: Data Science including Python and Jupyter Notebook review
@@ -185,5 +184,5 @@ Naive Bayes Notebook
 [ back to Table of Contents](#toc)
 <br>
 
-
+## Data 100
 
