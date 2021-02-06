@@ -48,6 +48,7 @@ https://github.com/DS-100/fa20
 14. [ Chapter 17-18: Classification, Updating Predictions](#chap1718)
 15. [ Association Rules and Bayes Theorem](#other)
 <br>
+
 ## Data 100
 
 <a name="chap1"></a>
