@@ -1,5 +1,5 @@
 # Data-Mining
-This site provides resources for an introductory course in Data Mining.  Students need a background in Python and Statistics in order to be successful in the class.  For students that need a review of either Python or Statistics, please use the resources provided in "Preparation for Class: A Review of Python and Statistics" or use resources of your choosing. 
+This site provides resources for an introductory course in Data Mining.  Students need an introductory background in Python and Statistics in order to be successful in the class.  For students that need a review of either Python or Statistics, please use the resources provided in "Preparation for Class: A Review of Python and Statistics" or use resources of your choosing. 
 
 RESOURCES
 
