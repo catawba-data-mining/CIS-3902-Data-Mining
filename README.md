@@ -5,18 +5,22 @@ RESOURCES
 
 TEXTBOOK:  The texts for the class are provided by UC Berkeley 
 
-Principles and Techniques of Data Science
-http://www.textbook.ds100.org/intro.html
-
 Data 8 Text: 
 https://www.inferentialthinking.com/chapters/intro
 Computataional and Inferential Thinking (also available through creative commons license, UC Berkeley)
 
-PUBLIC REPOSITORY:  The public repository for resources for Principles and Techniques of Data Science
+Data 100 Text:
+Principles and Techniques of Data Science
+http://www.textbook.ds100.org/intro.html
+
+PUBLIC REPOSITORY:  (additional resources for class)
+The public repository for Data 8 Computational and Inferential Thinking
+https://github.com/data-8/materials-sp20
+
+The public repository for Data 100 Principles and Techniques of Data Science:
 https://github.com/DS-100/fa20
 
-The public repository for Data 8 (additional resources for class):
-https://github.com/data-8/materials-sp20
+
 
 <a name="toc"></a>
 ## Table of Contents
