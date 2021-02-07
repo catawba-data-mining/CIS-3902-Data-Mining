@@ -33,21 +33,4 @@ Click on <a href="https://github.com/profunccdata/Data-Mining/blob/main/chapter1
 [ back to Table of Contents](#toc)
 <br>
 
-
-## Resources
-
-PUBLIC REPOSITORY:  (additional resources for class)
-The public repository for Data 8 Computational and Inferential Thinking
-https://github.com/data-8/materials-sp20
-
-The public repository for Data 100 Principles and Techniques of Data Science:
-https://github.com/DS-100/fa20
-
-
-[Preparation for Class:  A Review of Python and Statistics](#review)
-<br>
-[Preparation for Class:  Installing Anaconda and Jupyter](#installation)
-<br>
-[Preparation for Class:  Working in the Cloud - Using Colab](#colab)
-<br>
-
+## The End
