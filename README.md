@@ -1,5 +1,5 @@
 # Data-Mining
-This site supports Data Mining, Spring 2021 at Catawba College taught by Dr. Laurel B. Powell and Dr. Pamela L. Thompson.
+This site supports Introduction to Data Mining, Spring 2021 at Catawba College taught by Dr. Laurel B. Powell and Dr. Pamela L. Thompson.
 
 TEXTBOOKS:  The texts for the class are provided by UC Berkeley 
 
