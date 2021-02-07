@@ -19,16 +19,9 @@ http://www.textbook.ds100.org/intro.html
 <a name="toc"></a>
 ## Table of Contents  (chapter content will be released each week)
 ## Data 8
-1. [ Chapter 1: Data Science ](#chap1)
+1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter1_homework1_lab.ipynb">Chapter 1 Lab and HW</a>
 
 <br>
-
-
-<a name="chap1"></a>
-## Chapter 1: Data Science including Python and Jupyter Notebook review
-Click on <a href="https://github.com/profunccdata/Data-Mining/blob/main/chapter1_homework1_lab.ipynb">Chapter 1 Lab and HW</a> to open the code associated with Data 8 Chapter 1.  Select the link for "Google Colab" at the top of the code and follow instructions once Google Colab opens.  Technical problems?  Please email lbpowell@catawba.edu and pthompso@catawba.edu or text 980-234-0042 (include your name and Data Mining).
-
-
 
 [ back to Table of Contents](#toc)
 <br>
