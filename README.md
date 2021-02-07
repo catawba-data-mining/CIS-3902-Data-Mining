@@ -3,7 +3,7 @@ This site supports coding examples and homework for Introduction to Data Mining,
 Getting Started:<br>
 1.  Create and verify a Github Account.<br>
 2.  Sign in to Github.<br>
-3.  Follow instructions in Blackboard for the weekly assignments for class.<br>
+3.  Follow instructions in Blackboard for the weekly assignments for class on https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/README.md.<br>
 
 TEXTBOOKS:  The texts for the class are provided by UC Berkeley:  
 
