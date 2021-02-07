@@ -1,9 +1,7 @@
 # Data-Mining
-This site provides resources for an introductory course in Data Mining.  Students need an introductory background in Python and Statistics in order to be successful in the class.  For students that need a review of either Python or Statistics, please use the resources provided in "Preparation for Class: A Review of Python and Statistics" or use resources of your choosing. 
+This site supports Data Mining, Spring 2021 at Catawba College taught by Dr. Laurel B. Powell and Dr. Pamela L. Thompson.
 
-RESOURCES
-
-TEXTBOOK:  The texts for the class are provided by UC Berkeley 
+TEXTBOOKS:  The texts for the class are provided by UC Berkeley 
 
 Data 8 Text: 
 https://www.inferentialthinking.com/chapters/intro
@@ -13,24 +11,9 @@ Data 100 Text:
 Principles and Techniques of Data Science
 http://www.textbook.ds100.org/intro.html
 
-PUBLIC REPOSITORY:  (additional resources for class)
-The public repository for Data 8 Computational and Inferential Thinking
-https://github.com/data-8/materials-sp20
-
-The public repository for Data 100 Principles and Techniques of Data Science:
-https://github.com/DS-100/fa20
-
-
 
 <a name="toc"></a>
 ## Table of Contents
-
-[Preparation for Class:  A Review of Python and Statistics](#review)
-<br>
-[Preparation for Class:  Installing Anaconda and Jupyter](#installation)
-<br>
-[Preparation for Class:  Working in the Cloud - Using Colab](#colab)
-<br>
 ## Data 8
 1. [ Chapter 1: Data Science ](#chap1)
 2. [ Chapter 2: Causality and Experiments ](#chap2)
@@ -52,6 +35,10 @@ https://github.com/DS-100/fa20
 
 <a name="chap1"></a>
 ## Chapter 1: Data Science including Python and Jupyter Notebook review
+Click on Chapter 1 Program to open the code associated with Data 8 Chapter 1.  Select the link for "Google Colab" at the top of the code and follow instructions once Google Colab opens.  Technical problems?  Please email lbpowell@catawba.edu and pthompso@catawba.edu or text 980-234-0042 (include your name and Data Mining).
+
+
+
 [ back to Table of Contents](#toc)
 <br>
 
@@ -156,7 +143,6 @@ Association Rules Notebook
 [ back to Table of Contents](#toc)
 <br>
 
-  
 ### A Gentle Introduction to Bayes Theorem for Machine Learning
 #### Bayes Theorem
 <p>Classification is a predictive modeling problem that involves assigning a label to a given new data sample input. For our case study, we want to know if our flight will be late or not based on what we know at the time we can make a decision to cancel</p>
@@ -184,5 +170,20 @@ Naive Bayes Notebook
 [ back to Table of Contents](#toc)
 <br>
 
-## Data 100
+## Resources
+
+PUBLIC REPOSITORY:  (additional resources for class)
+The public repository for Data 8 Computational and Inferential Thinking
+https://github.com/data-8/materials-sp20
+
+The public repository for Data 100 Principles and Techniques of Data Science:
+https://github.com/DS-100/fa20
+
+
+[Preparation for Class:  A Review of Python and Statistics](#review)
+<br>
+[Preparation for Class:  Installing Anaconda and Jupyter](#installation)
+<br>
+[Preparation for Class:  Working in the Cloud - Using Colab](#colab)
+<br>
 
