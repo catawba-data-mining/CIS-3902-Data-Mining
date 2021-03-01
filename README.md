@@ -22,7 +22,7 @@ http://www.textbook.ds100.org/intro.html
 1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter1_homework1_lab.ipynb">Chapter 1 Lab and HW 1</a>
 2. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter2_homework2_lab.ipynb">Chapter 2 Lab and HW 2</a>
 3. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Chapter7_HW_3_lab.ipynb">Chapter 7 Lab and HW 3</a>
-<br>
+<br><br>
 
 [ back to Table of Contents](#toc)
 <br>
