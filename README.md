@@ -25,7 +25,7 @@ http://www.textbook.ds100.org/intro.html
 4. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter11_homework4_lab.ipynb">Chapter 11 Lab and HW 4</a>
 5. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter15_16_HW5_Lab.ipynb">Chapter 15 & 16 Lab and HW 5</a>
 6. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/homework6_titanic_lab.ipynb">Titanic Lab HW 6</a>
-7. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/homework7_decision_trees.ipynb">Decision Trees Random Forests Confusion Matrix HW 6</a>
+7. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/homework7_decision_trees.ipynb">Decision Trees Random Forests Confusion Matrix HW 7</a>
 
 [ back to Table of Contents](#toc)
 <br>
