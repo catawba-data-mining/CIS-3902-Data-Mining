@@ -12,8 +12,9 @@ Getting Started:<br>
 <a name="tocspring2022"></a>
 ### Table of Contents  (chapter content will be released each week)
 ### Click on the link to access the assignment<br>
-1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter1_homework1_lab.ipynb">Chapter 1 Lab and HW 1</a>
-
+1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch01_examples.ipynb">Chapter 1 Examples/a>
+2. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch02_examples.ipynb">Chapter 2 Examples/a>
+2. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ex_2-1_mortality.ipynb">Chapter 2 Lab/a>
 [ back to Table of Contents](#tocspring2022)
 <br>
 
