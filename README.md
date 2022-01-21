@@ -9,6 +9,9 @@ Getting Started:<br>
 
 ### Textbook:  Murach's Python for Data Analysis
 
+### Markdown Tutorial <a href="https://agea.github.io/tutorial.md/">Markdown Tutorial</a>
+<br>
+
 <a name="tocb"></a>
 ### Table of Contents  (chapter content will be released each week)
 ### Click on the link to access the assignment<br>
