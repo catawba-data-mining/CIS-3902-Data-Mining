@@ -7,17 +7,17 @@ Getting Started:<br>
 
 ## SPRING 2022 Class
 
-## Textbook:  Murach's Python for Data Analysis
+### Textbook:  Murach's Python for Data Analysis
 
 <a name="tocspring2022"></a>
-## Table of Contents  (chapter content will be released each week)
-## Click on the link to access the assignment<br>
+### Table of Contents  (chapter content will be released each week)
+### Click on the link to access the assignment<br>
 1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter1_homework1_lab.ipynb">Chapter 1 Lab and HW 1</a>
 
 [ back to Table of Contents](#tocspring2022)
 <br>
 
-## The End
+### The End
 
 
 #### SPRING 2021 Class
