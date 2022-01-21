@@ -1,9 +1,26 @@
 # Data-Mining
-This site supports coding examples and homework for Introduction to Data Mining, Spring 2021 at Catawba College taught by Dr. Laurel B. Powell and Dr. Pamela L. Thompson.<br>
+This site supports coding examples and homework for Introduction to Data Mining (CIS 3902)at Catawba College.<br>
 Getting Started:<br>
 1.  Create and verify a Github Account.<br>
 2.  Sign in to Github.<br>
 3.  Follow instructions in Blackboard for the weekly assignments for class on https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/README.md.<br>
+
+SPRING 2022 Class
+
+Textbook:  Murach's Python for Data Analysis
+
+<a name="tocspring2022"></a>
+## Table of Contents  (chapter content will be released each week)
+## Click on the link to access the assignment<br>
+1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter1_homework1_lab.ipynb">Chapter 1 Lab and HW 1</a>
+
+[ back to Table of Contents](#tocspring2022)
+<br>
+
+## The End
+
+
+SPRING 2021 Class
 
 TEXTBOOKS:  The texts for the class are provided by UC Berkeley:  
 
