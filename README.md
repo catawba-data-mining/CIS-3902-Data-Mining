@@ -11,6 +11,8 @@ Getting Started:<br>
 
 ### Markdown Tutorial <a href="https://agea.github.io/tutorial.md/">Markdown Tutorial</a>
 <br>
+### Add tocolab after github in the URL to open in COLAB
+### if input is accessed via URL, no changes are needed to pd.read
 
 <a name="tocb"></a>
 ### Table of Contents  (chapter content will be released each week)
@@ -18,6 +20,8 @@ Getting Started:<br>
 1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch01_examples.ipynb">Chapter 1 Examples</a>
 2. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch02_examples.ipynb">Chapter 2 Examples</a>
 3. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ex_2-1_mortality.ipynb">Chapter 2 Lab</a>
+4. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch03_examples.ipynb">Chapter 3 Examples</a>
+5. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch04_examples.ipynb">Chapter 4 Examples</a>
 
 [ back to Table of Contents](#tocb)
 <br>
