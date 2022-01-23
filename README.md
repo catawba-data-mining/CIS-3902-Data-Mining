@@ -19,9 +19,9 @@ Getting Started:<br>
 ### Click on the link to access the assignment<br>
 1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch01_examples.ipynb">Chapter 1 Examples</a>
 2. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch02_examples.ipynb">Chapter 2 Examples</a>
-3. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ex_2-1_mortality.ipynb">Chapter 2 Lab</a>
-4. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch03_examples.ipynb">Chapter 3 Examples</a>
-5. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch04_examples.ipynb">Chapter 4 Examples</a>
+   <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ex_2-1_mortality.ipynb">Chapter 2 Lab</a>
+3. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch03_examples.ipynb">Chapter 3 Examples</a>
+4. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch04_examples.ipynb">Chapter 4 Examples</a>
 
 [ back to Table of Contents](#tocb)
 <br>
