@@ -22,6 +22,7 @@ Getting Started:<br>
    <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ex_2-1_mortality.ipynb">Chapter 2 Lab</a>
 3. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch03_examples.ipynb">Chapter 3 Examples</a>
 4. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch04_examples.ipynb">Chapter 4 Examples</a>
+5. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ChallengeLabDataViz.ipynb">Chap. 1 to 4 - Challenge Lab Data Viz</a>
 
 [ back to Table of Contents](#tocb)
 <br>
