@@ -26,8 +26,7 @@ Getting Started:<br>
    UPDATE  <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ChallengeLabDataViz.ipynb">Chap. 1 to 4 - Challenge Lab Data Viz</a>
 6. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch05_examples.ipynb">Chapter 5 Examples</a>
 7. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch06_examples.ipynb">Chapter 6 Examples</a>
-
-[ back to Table of Contents](#tocb)
+8. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ex_6-1_polls.ipynb">Chapter 6 Exercise</a>
 <br>
 
 ### The End
