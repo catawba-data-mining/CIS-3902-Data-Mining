@@ -30,6 +30,7 @@ Getting Started:<br>
 9. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch07_examples_for_colab.ipynb">Chapter 7 Examples</a>
 10. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Challenge_Exercise_Airports.ipynb">Chapter 7 Challenge Lab</a>
 11. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch08_examples.ipynb">Chapter 8 Examples</a>
+12. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ex_8_1_fires.ipynb">Chapter 8 Tutorial</a>
 <br>
 
 ### The End
