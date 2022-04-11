@@ -34,6 +34,8 @@ Getting Started:<br>
 13. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch09_examples.ipynb">Chapter 9 Example</a>
 14. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ex_9-1_stocks.ipynb">Chapter 9 Tutorial</a>
 15. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch10_examples.ipynb">Chapter 10 Example</a>
+16. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/SPR_22_Project_Deliverable_1_Detecting_Shark_Presence.ipynb">PROJECT DEL 1</a>
+17. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/SPR_22_Project_Deliverable_2_Detecting_Shark_Presence.ipynb">PROJECT DEL 2</a>
 <br>
 
 ### The End
@@ -65,6 +67,7 @@ http://www.textbook.ds100.org/intro.html
 8. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Project Deliverable 1 Detecting Shark Presence.ipynb">Project Deliverable 1 Predicting Shark Presence</a>
 9. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Project_Deliverable_2_Association_Rules.ipynb">Project Deliverable 2 Association Rules</a>
 10. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Deliverable_3_Shark_Attack_Clustering.ipynb">Project Deliverable 3 Clustering</a>
+
 
 [ back to Table of Contents](#toc)
 <br>
