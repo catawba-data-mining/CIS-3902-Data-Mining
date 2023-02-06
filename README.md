@@ -9,8 +9,7 @@ Getting Started:<br>
 3.  Sign in to Github and access <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/README.md">Catawba Data Mining on Github</a>.<br>
 4.  Follow instructions in Blackboard for the weekly assignments for class on https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/README.md.<br>
 
-### Markdown Tutorial <a href="https://agea.github.io/tutorial.md/">Markdown Tutorial</a>
-<br>
+### Click Here for Markdown Tutorial: <a href="https://agea.github.io/tutorial.md/">Markdown Tutorial</a>
 
 <a name="tocb"></a>
 ### Weekly Assignments
