@@ -7,7 +7,7 @@ Getting Started:<br>
 
 ## SPRING 2023 Zybook Data Mining
 
-### Markdown Tutorial <a href="https://agea.githubtocolab.io/tutorial.md/">Markdown Tutorial</a>
+### Markdown Tutorial <a href="https://agea.github.io/tutorial.md/">Markdown Tutorial</a>
 <br>
 ### Add tocolab after github in the URL to open in Colab - Open Souce Google Colab Jupyter Notebook
 ### You will need to sign in to a google account for Colab to open
