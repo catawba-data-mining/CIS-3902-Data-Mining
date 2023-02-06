@@ -5,13 +5,12 @@ Getting Started:<br>
 2.  Sign in to Github.<br>
 3.  Follow instructions in Blackboard for the weekly assignments for class on https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/README.md.<br>
 
-## SPRING 2022 Class
+## SPRING 2023 Zybook Data Mining
 
-### Textbook:  Murach's Python for Data Analysis
-
-### Markdown Tutorial <a href="https://agea.github.io/tutorial.md/">Markdown Tutorial</a>
+### Markdown Tutorial <a href="https://agea.githubtocolab.io/tutorial.md/">Markdown Tutorial</a>
 <br>
-### Add tocolab after github in the URL to open in COLAB
+### Add tocolab after github in the URL to open in Colab - Open Souce Google Colab Jupyter Notebook
+### You will need to sign in to a google account for Colab to open
 ### if input is accessed via URL, no changes are needed to pd.read
 
 <a name="tocb"></a>
