@@ -1,7 +1,7 @@
 ## Data-Mining
 This site supports coding examples and homework for Introduction to Data Mining (CIS 3902) at Catawba College.<br>
 
-##SPRING 2023 Zybook Data Mining
+## SPRING 2023 Zybook Data Mining
 
 Getting Started:<br>
 1.  Create and verify a Github Account.<br>
@@ -9,11 +9,11 @@ Getting Started:<br>
 3.  Sign in to Github and access <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/README.md">Catawba Data Mining on Github</a>.<br>
 4.  Follow instructions in Blackboard for the weekly assignments for class on https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/README.md.<br>
 
-###Click Here for Markdown Tutorial: <a href="https://agea.github.io/tutorial.md/">Markdown Tutorial</a>
+### Click Here for Markdown Tutorial: <a href="https://agea.github.io/tutorial.md/">Markdown Tutorial</a>
 
 <a name="tocb"></a>
 ### Weekly Assignments
-####Table of Contents  (chapter content will be released each week) - Click on the link to access the assignment<br>
+#### Table of Contents  (chapter content will be released each week) - Click on the link to access the assignment<br>
 <br>
 <a name="toc"></a>
 
@@ -23,7 +23,7 @@ Getting Started:<br>
 
 [ back to Table of Contents](#toc)
 
-####Data 8 and Data 100<br>
+#### Data 8 and Data 100<br>
 TEXTBOOKS:  The supplemental text and exercises for the Spring 2023 class are provided by UC Berkeley (Data 8 and Data 100):  
 <br>
 Data 8 Text: <br>
