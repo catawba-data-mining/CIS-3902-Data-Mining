@@ -15,6 +15,13 @@ Getting Started:<br>
 ### Weekly Assignments
 #### Table of Contents  (chapter content will be released each week) - Click on the link to access the assignment<br>
 <br>
+<a name="toc"></a>
+#### Table of Contents <br>
+#### Data 8 and Data 100<br>
+1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter1_homework1_lab.ipynb">HW1: Week 5 HW and Lab</a>
+
+[ back to Table of Contents](#toc)
+
 TEXTBOOKS:  The supplemental text and exercises for the Spring 2023 class are provided by UC Berkeley (Data 8 and Data 100):  
 <br>
 Data 8 Text: <br>
@@ -24,14 +31,6 @@ Computataional and Inferential Thinking (also available through creative commons
 Data 100 Text:
 Principles and Techniques of Data Science
 http://www.textbook.ds100.org/intro.html
-
-
-<a name="toc"></a>
-#### Table of Contents <br>
-#### Data 8 and Data 100<br>
-1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter1_homework1_lab.ipynb">HW1: Week 5 HW and Lab</a>
-
-[ back to Table of Contents](#toc)
 <br>
 
 #### The End
