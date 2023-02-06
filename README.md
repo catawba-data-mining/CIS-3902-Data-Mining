@@ -18,7 +18,7 @@ Getting Started:<br>
 
 [ back to Table of Contents](#toc)
 
-#### Data 8 and Data 100<br>
+#### Reference:<br>
 TEXTBOOKS:  The supplemental text and exercises for the Spring 2023 class are provided by UC Berkeley (Data 8 and Data 100):  
 <br>
 Data 8 Text: <br>
