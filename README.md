@@ -13,8 +13,7 @@ Getting Started:<br>
 
 <a name="tocb"></a>
 ### Weekly Assignments
-### Table of Contents  (chapter content will be released each week)
-### Click on the link to access the assignment<br>
+#### Table of Contents  (chapter content will be released each week) - Click on the link to access the assignment<br>
 <br>
 TEXTBOOKS:  The supplemental text and exercises for the Spring 2023 class are provided by UC Berkeley (Data 8 and Data 100):  
 <br>
