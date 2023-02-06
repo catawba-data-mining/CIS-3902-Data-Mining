@@ -10,8 +10,7 @@ Getting Started:<br>
 ### Click Here for: <a href="https://agea.github.io/tutorial.md/">Markdown Tutorial</a>
 
 <a name="tocb"></a>
-### Weekly Assignments
-#### Table of Contents  (chapter content will be released each week) - Click on the link to access the assignment<br>
+### Weekly Assignments - (chapter content will be released each week)<br>
 <br>
 <a name="toc"></a>
 
