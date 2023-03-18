@@ -14,8 +14,8 @@ Getting Started:<br>
 <br>
 <a name="toc"></a>
 
-1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter1_homework1_lab.ipynb">HW1: Week 5 HW and Lab</a>
-
+1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter1_homework1_lab.ipynb">HW: Week 5 HW and Lab</a><br>
+2. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter15_16_HW5_Lab.ipynb">HW: Week 5 HW and Lab</a><br>
 [ back to Table of Contents](#toc)
 
 #### Reference:<br>
