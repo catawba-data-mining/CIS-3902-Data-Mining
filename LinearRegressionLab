@@ -1,0 +1,993 @@
+{
+ "cells": [
+  {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter15_16_HW5_Lab.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+       ]
+    },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "FmmgOoN6iZ82"
+   },
+   "source": [
+    "  <h1><center>Practicing Linear Regression on the US Housing Price Data \"USA_Housing.csv\"<br>\n",
+    "        Catawba College Data Mining Class</center><br>\n",
+    "        <h2> Research question:  Using public data on USA Housing, can we accurately predict housing price based on other features such as number of bedrooms, area population, area income?<br>\n",
+    "<h2>Group Members (add names for each member in the group)<br>\n",
+    "1.<br><br>\n",
+    "2.<br><br>\n",
+    "3.<br><br>\n",
+    "4.<br></h1></h2>\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "IuUn64eGiZ9G"
+   },
+   "source": [
+    "\n",
+    "<p><h3>DIRECTIONS:<br><br>\n",
+    "    1.  Carefully read Chapters 15 and 16 in Data 8:<br>\n",
+    "    <a href=\"https://www.inferentialthinking.com/chapters/15/Prediction.html\">Chapter 15</a><br>\n",
+    "        <a href=\"https://www.inferentialthinking.com/chapters/16/Inference_for_Regression.html\">Chapter 16</a><br>\n",
+    "2.  Review and discuss (with your group) the following markdown (text narrative) and code<br>\n",
+    "3. Provide responses to the questions at the end of the notebook.<br>\n",
+    "    4.  Download your notebook and submit in Blackboard by the due date.<br></h3></h1></p>\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "cC9y7JIeiZ9T"
+   },
+   "source": [
+    "## PART 1: Introduction to Linear Regression Modeling\n",
+    "\n",
+    "In statistics, linear regression is a popular approach for modeling the relationship between a dependent variable y and one or more explanatory variables (or independent variables) denoted X. The case of one explanatory variable is called simple linear regression. For more than one explanatory variable, the model is labeled multiple linear regression.\n",
+    "\n",
+    "In linear regression, the relationships are modeled using linear predictor functions whose unknown model parameters are estimated from the data. Such models are called linear models. \n",
+    "\n",
+    "Linear regression models are often fitted using the least squares approach, but they may also be fitted in other ways (see note at end). Additionally, the least squares approach can be used to fit models that are not linear models. Although the terms \"least squares\" and \"linear model\" are closely linked, they are not synonymous.\n",
+    "\n",
+    "NOTE:  Other modelings for linear regression include minimizing the \"lack of fit\" in some other form (as with least absolute deviations regression), or by minimizing a penalized version of the least squares loss function as in ridge regression ($L_2$-norm penalty) and lasso ($L_1$-norm penalty). This is a topic for advanced discussion!"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "G48FVp4tiZ9e"
+   },
+   "source": [
+    "## PART 2: Coding a Linear Regression Model in Python with Jupyter using the USA_Housing dataset."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "f80GPhVCiZ9g"
+   },
+   "source": [
+    "### 2. A. There are two main ways to perform linear regression in Python — with Statsmodels and scikit-learn. We will use scikit-learn.\n",
+    "\n",
+    "### Import packages and dataset (read code comments and run each code block, some will have output)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "qB1vZHYeiZ9h"
+   },
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "%matplotlib inline\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "loBCTpxGiZ9j"
+   },
+   "source": [
+    "### 2. B.  Load the CSV file and examine the first few records"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "VO_yCfZFiZ9k",
+    "outputId": "30cfb362-43bd-4877-b29d-9ec7cd3553dd"
+   },
+   "outputs": [],
+   "source": [
+    "# df will be the name of the file that we input\n",
+    "df = pd.read_csv(\"https://raw.githubusercontent.com/catawba-data-mining/CIS-3902-Data-Mining/main/USA_Housing.csv\")\n",
+    "# df = pd.read_csv(\"USA_Housing.csv\")\n",
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "7iD0RBSRiZ9m"
+   },
+   "source": [
+    "### 2. C.  Data Exploration and Preprocessing.  Data exploration helps you learn more about the features of the dataset, data preprocessing is where you prepare the data for modeling.  We will be examining basic information on the data set - our ulitmate goal will be to predict Price for houses based on the other numeric variables such as average area income, average area house age, etc."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "ucrFbCcWiZ9m",
+    "outputId": "3564f133-df6e-4594-bb89-8647a7a09c75"
+   },
+   "outputs": [],
+   "source": [
+    "# 1.\n",
+    "# we will use info to get basic information\n",
+    "# note the numeric and non-numeric attributes\n",
+    "df.info(verbose=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "Dih7UMBIiZ9n",
+    "outputId": "ffb5157d-6e43-44f6-b04c-4d7068e2a6d2"
+   },
+   "outputs": [],
+   "source": [
+    "# 2.\n",
+    "#next use df.describe() to get the statistical summary of the various features of the data set\n",
+    "#the percentiles show the data values up to a certain percentile\n",
+    "#for example 10% of the Average Area Number of Bedrooms is 0 up to 2.31\n",
+    "df.describe(percentiles=[0.1,0.25,0.5,0.75,0.9])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "O9RSVYT2iZ9v",
+    "outputId": "e9ebe0a1-782d-4327-a8af-be9ee798d2bd"
+   },
+   "outputs": [],
+   "source": [
+    "# 3.\n",
+    "# even though we have seen them, lets use df.columns to see the column names\n",
+    "df.columns"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "p3P0yquViZ9w"
+   },
+   "source": [
+    "**Pairplots using seaborn** Examine Price on the x axis and the relationship of the other individual variables on the y axis.  Do you see any linear trends? Do any other variables show a linear trend with each other?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "euYBU8xAiZ9x",
+    "outputId": "eb67c9af-44f3-419c-b61c-7ff8e0a8a2c8"
+   },
+   "outputs": [],
+   "source": [
+    "# 4.  We are using seaborn to get pairplots for all of the data that is numeric!\n",
+    "\n",
+    "sns.pairplot(df)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "CYbWHVsWiZ9x"
+   },
+   "source": [
+    "**Distribution of price (the predicted quantity)** We want to first check the distribution of the variable we are trying to predict.  Why?   It is useful to understand the distribution of predictor variables to find influential outliers or concentrated values as this can affect the accuracy of the regression model. A highly skewed independent variable may be made more symmetric with a transformation which may include removing outliers or applying a transformation to allow the distribution to be closer to a normal distribution."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "_kU1FNhfiZ9y",
+    "outputId": "b1ef28dc-e90b-4e44-ae42-3862a4c47b31"
+   },
+   "outputs": [],
+   "source": [
+    "# 4.  Let's look at the distribution of the variable we want to predict:  Price\n",
+    "# here is a histogram\n",
+    "\n",
+    "df['Price'].plot.hist(bins=25,figsize=(8,4))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "mu15Fty2iZ90",
+    "outputId": "5af0fb9a-fdf2-4404-bae0-4ad246df5da3"
+   },
+   "outputs": [],
+   "source": [
+    "# 5. another look -- there are also additional ways to do this\n",
+    "df['Price'].plot.density()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "4AYhtQYIiZ90"
+   },
+   "source": [
+    "**Correlation matrix and heatmap** Price seems to be normally distributed.  Let's continue our exploration by looking at correlations between variables.  We will use df.corr() to look at correlation coefficients and heatmaps are always fun!"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "Yknu78fiiZ91",
+    "outputId": "76c4dd65-d664-4210-fba5-d344e88f0394",
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "# 6.\n",
+    "# curious about what this actually is calculating? \n",
+    "# Pandas dataframe.corr () is used to find the pairwise correlation of all columns \n",
+    "# in the dataframe. Any na values are automatically excluded. \n",
+    "# This is for any non-numeric data type columns in the dataframe of course!\n",
+    "df.corr()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "RF8cJcGSiZ93",
+    "outputId": "5d6d2d40-5689-458c-e7f1-84ff4cf02474"
+   },
+   "outputs": [],
+   "source": [
+    "# 7.\n",
+    "# Here is the heatmap using the amazing functionality of seaborn\n",
+    "# anything black is closer to 0, with light pink at 1 for correlation.  The diagonal\n",
+    "# column through the middle shows the variables correlated to themselves so\n",
+    "# of course this is at 1.\n",
+    "# we are looking for variables that are at .8 (orange) or above.\n",
+    "plt.figure(figsize=(10,7))\n",
+    "sns.heatmap(df.corr(),annot=True,linewidths=2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "hDTHb4rQiZ95"
+   },
+   "source": [
+    "### 3.  Preparing the Data for Modeling.  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "MYTEZ8HBiZ-F"
+   },
+   "source": [
+    "We are going to put the independent variables in a data frame which we will name \"X\", and the dependent variable Price in y - we want to develop a predictive model using linear regression for y or Price.\n",
+    "\n",
+    "Here are the steps:\n",
+    "\n",
+    "3. A. through 3. E.:  Split the data into the two data frames - X and y.  Remove the non-numeric address variable.\n",
+    "3. F. through 3. H.:  Create two versions of this:  training and test data sets.  We use the training data set to train the model - this set includes the predictor variable Price and fits the model based on knowing the outcome. Then the test data set is used to \"test\" the model that is developed.  The test data set makes predictions on Price (without knowing Price) and then we compare the Predictions to the actual Price that we know is in the test data.  \n",
+    "\n",
+    "Training data is usually around 70% of the data, then the testing data is 30% and the records do not overlap, they are separate.  So if you have 100 records, 70 will be in train, and 30 in test.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "Fk7latzgiZ-G"
+   },
+   "source": [
+    "3. A. \n",
+    "\n",
+    "** Make a list of data frame column names** Python List items are indexed, the first item has index [0], the second item has index [1] etc. We will be using a list to split the data into two data frames ultimately:  X and y.  \n",
+    "\n",
+    "Remember Price is the outcome variable, also called the response or dependent variable -- it is what we hope to predict with linear regression.  The other variables are the predictors, or explanatory or independent variables.\n",
+    "\n",
+    "In regression analysis, the dependent variable is denoted \"y\" and the independent variables are denoted by \"X\".\n",
+    "\n",
+    "We are going to first create a list of the column names (we will drop the address) and place all but Price in X for the independent variables.  y will hold Price, our response or dependent variable.\n",
+    "\n",
+    "Want to learn more about data frames?  <a href=\"https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm\">Tutorial on Data Frames</a>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "WzKRt0yRiZ-G",
+    "outputId": "8f3e54cc-f321-4f3f-c123-c27918de4c0c"
+   },
+   "outputs": [],
+   "source": [
+    "# 3. A.\n",
+    "l_column = list(df.columns) # Making a list out of all of the column names\n",
+    "len_feature = len(l_column) # Length of column vector list\n",
+    "l_column"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "G4IefT2ciZ-G"
+   },
+   "source": [
+    "** Put all the numerical features in X (data frame), Price in y, ignore Address which is string and of course will not be used for our model for linear regression**\n",
+    "\n",
+    "The following code is referencing the index values of the data frame and the first feature is at index 0.  X then gets features 0 to 5 so X includes everything but Price and Address from the list above.\n",
+    "\n",
+    "Y gets feature 7 (len_feature) - 2 or 5 which is the feature in position 6 or price since the indexes are zero based"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "LpdboZ-diZ-H"
+   },
+   "outputs": [],
+   "source": [
+    "# 3. B.\n",
+    "X = df[l_column[0:len_feature-2]]\n",
+    "y = df[l_column[len_feature-2]]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "hXDMrCmziZ-I"
+   },
+   "source": [
+    "** Let's take a look **"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "yNGdq0F3iZ-I",
+    "outputId": "911fba28-a01d-4522-bd55-d5921aed80ba"
+   },
+   "outputs": [],
+   "source": [
+    "# 3. C.\n",
+    "print(\"Feature set size:\",X.shape)\n",
+    "print(\"Variable set size:\",y.shape)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "17Z5Lz4CiZ-I",
+    "outputId": "b9f8349b-e1cd-4ec9-df12-a02f8551b6af"
+   },
+   "outputs": [],
+   "source": [
+    "# 3. D.\n",
+    "X.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "_vMikDQxiZ-K",
+    "outputId": "010294bf-10d5-4c12-9b5a-190eee898060"
+   },
+   "outputs": [],
+   "source": [
+    "# 3. E. \n",
+    "y.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "Rzepj23viZ-M"
+   },
+   "source": [
+    "### Test-train split\n",
+    "#### Now we will split our data into a training and testing split - 70% training and 30% testing.  We will train the model on the training split then evaluate the model on the test split.\n",
+    "\n",
+    "#### NOTE:  This is called a supervised model because we have a predictor variable \"Price\" that is supervising our learning - we know what the outcome is for our data (not for new data of course) and we are using this information to train our linear regression model in a \"supervised\" way!\n",
+    "\n",
+    "#### The train and test sets are vital to ensure that your supervised learning model is able to generalize well to new data."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "RCuKkUl1iZ-N"
+   },
+   "source": [
+    "**There are two main ways to perform linear regression in Python — with Statsmodels and scikit-learn. We are using scikit-learn and will start by importing some of the functionality.**\n",
+    "\n",
+    "**Import train_test_split function from scikit-learn**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "IFPYDizUiZ-O"
+   },
+   "outputs": [],
+   "source": [
+    "#3. F.\n",
+    "#from sklearn.cross_validation import train_test_split\n",
+    "from sklearn.model_selection import train_test_split"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "xWEu5oJiiZ-O"
+   },
+   "source": [
+    "**Create X and y train and test splits in one command using a split ratio and a random seed**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "3BigcuCfiZ-O"
+   },
+   "outputs": [],
+   "source": [
+    "#3. G. \n",
+    "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "_g4yHoOIiZ-P"
+   },
+   "source": [
+    "**Check the size and shape of train/test splits (it should be in the ratio as per test_size parameter above)**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "JFwgCNIjiZ-Q",
+    "outputId": "440ef1cb-9866-496d-dd61-5b7fa6049bd8"
+   },
+   "outputs": [],
+   "source": [
+    "#3. H. \n",
+    "print(\"Training feature set size:\",X_train.shape)\n",
+    "print(\"Test feature set size:\",X_test.shape)\n",
+    "print(\"Training variable set size:\",y_train.shape)\n",
+    "print(\"Test variable set size:\",y_test.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "HxH-njqBiZ-R"
+   },
+   "source": [
+    "### 4. Model fit and training - we are ready to run our linear regression model!"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "MyuNTkwbiZ-T"
+   },
+   "source": [
+    "**Import linear regression model estimator from scikit-learn and instantiate**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "P6SFtuC6iZ-U"
+   },
+   "outputs": [],
+   "source": [
+    "# 4. A.\n",
+    "from sklearn.linear_model import LinearRegression\n",
+    "from sklearn import metrics"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "dxp3L338iZ-V"
+   },
+   "outputs": [],
+   "source": [
+    "#4. B.\n",
+    "lm = LinearRegression() # Creating a Linear Regression object 'lm'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "SPZoxKCYiZ-V"
+   },
+   "source": [
+    "**Fit the model on to the instantiated object using our training data which is 70% of the data.  Note how we are using X train with the independent features and Y train which has the matching independent variable for each of the rows (Price)**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "-TOyS-gbiZ-V",
+    "outputId": "5a006311-419d-441c-f604-3846cce20882"
+   },
+   "outputs": [],
+   "source": [
+    "#4. C.\n",
+    "lm.fit(X_train,y_train) \n",
+    "# Fit the linear model on to the 'lm' object itself i.e. no need to set this to another variable"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "NtjP8UTYiZ-X"
+   },
+   "source": [
+    "# **Check the results - think about what you have learned about linear regression from statistics class and this class.  We are going to get the intercept and coefficients from our modeling step and put them in a DataFrame**\n",
+    "\n",
+    "Notice how lm has all of the good information for us!  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "iq3spS_IiZ-X",
+    "outputId": "55283554-ca3f-44bc-dd6c-9058e113f5b4"
+   },
+   "outputs": [],
+   "source": [
+    "#4. D. let's print some of the actual  predictions that were made\n",
+    "predictions = lm.predict(X)\n",
+    "print(predictions)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "g8yn6HQTiZ-X",
+    "outputId": "4afe8fd7-0c11-4917-c80f-c1e18ed08570"
+   },
+   "outputs": [],
+   "source": [
+    "#4. E.\n",
+    "print(\"The intercept term of the linear model:\", lm.intercept_)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "SNKO5jhtiZ-Y",
+    "outputId": "fc998205-c688-4252-d6d4-ecc280826b1a"
+   },
+   "outputs": [],
+   "source": [
+    "#4. F.\n",
+    "# Let's print the coefficients\n",
+    "cdf = pd.DataFrame(data=lm.coef_, index=X_train.columns, columns=[\"Coefficients\"])\n",
+    "cdf"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "jGAieJ6piZ-Z"
+   },
+   "source": [
+    "### 5.  Model Evaluation - how did we do with the train data? Let's look at the statistics.  Need a quick review of standard errors, t-statistic and R squared, in other words evaluation measures for linear regression and other models?  Check here:  <a href=\"https://www.youtube.com/watch?v=7MAuojBTF-g\">Khan Academy Calculating T-Statistic for Slope of Regression Line</a>.  Please note:  coefficient is sometimes used as a alternate tterm for slope.\n",
+    "### Calculation of standard errors and t-statistic for the coefficients\n",
+    "### Important:  see list of features in the order of importance for predicting the house price"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "mHL7oz77iZ-a",
+    "outputId": "93eea9da-9654-4d4b-9e1e-5c34c12cba81"
+   },
+   "outputs": [],
+   "source": [
+    "#5. A. Coefficients, Standard Error, t-statistic\n",
+    "n=X_train.shape[0]\n",
+    "k=X_train.shape[1]\n",
+    "dfN = n-k\n",
+    "train_pred=lm.predict(X_train)\n",
+    "train_error = np.square(train_pred - y_train)\n",
+    "sum_error=np.sum(train_error)\n",
+    "se=[0,0,0,0,0]\n",
+    "for i in range(k):\n",
+    "    r = (sum_error/dfN)\n",
+    "    r = r/np.sum(np.square(X_train[list(X_train.columns)[i]]-X_train[list(X_train.columns)[i]].mean()))\n",
+    "    se[i]=np.sqrt(r)\n",
+    "cdf['Standard Error']=se\n",
+    "cdf['t-statistic']=cdf['Coefficients']/cdf['Standard Error']\n",
+    "cdf"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "d3Fg0wKNiZ-d",
+    "outputId": "5de30c76-2223-4056-9120-214852e6d013"
+   },
+   "outputs": [],
+   "source": [
+    "# 5. B. let's print the features by the t-statistic, the higher the better the value is at predicting price\n",
+    "print(\"Features arranged in the order of importance for predicting the house price\\n\",'-'*90,sep='')\n",
+    "l=list(cdf.sort_values('t-statistic',ascending=False).index)\n",
+    "print(' > \\n'.join(l))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "KBX2a_4WiZ-i",
+    "outputId": "dc20300e-c269-41bf-bf06-d8320d3362fe"
+   },
+   "outputs": [],
+   "source": [
+    "#5. C. Why not create some scatter plots for each feature with respect to price?\n",
+    "l=list(cdf.index)\n",
+    "from matplotlib import gridspec\n",
+    "fig = plt.figure(figsize=(18, 10))\n",
+    "gs = gridspec.GridSpec(2,3)\n",
+    "#f, ax = plt.subplots(nrows=1,ncols=len(l), sharey=True)\n",
+    "ax0 = plt.subplot(gs[0])\n",
+    "ax0.scatter(df[l[0]],df['Price'])\n",
+    "ax0.set_title(l[0]+\" vs. Price\", fontdict={'fontsize':20})\n",
+    "\n",
+    "ax1 = plt.subplot(gs[1])\n",
+    "ax1.scatter(df[l[1]],df['Price'])\n",
+    "ax1.set_title(l[1]+\" vs. Price\",fontdict={'fontsize':20})\n",
+    "\n",
+    "ax2 = plt.subplot(gs[2])\n",
+    "ax2.scatter(df[l[2]],df['Price'])\n",
+    "ax2.set_title(l[2]+\" vs. Price\",fontdict={'fontsize':20})\n",
+    "\n",
+    "ax3 = plt.subplot(gs[3])\n",
+    "ax3.scatter(df[l[3]],df['Price'])\n",
+    "ax3.set_title(l[3]+\" vs. Price\",fontdict={'fontsize':20})\n",
+    "\n",
+    "ax4 = plt.subplot(gs[4])\n",
+    "ax4.scatter(df[l[4]],df['Price'])\n",
+    "ax4.set_title(l[4]+\" vs. Price\",fontdict={'fontsize':20})"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "-3WAZIzqiZ-k"
+   },
+   "source": [
+    "**R-square of the model fit**\n",
+    "\n",
+    "**R-square value is a formula that determines how much a variable’s behavior can explain the behavior of another variable.**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "JuMN_q-YiZ-l",
+    "outputId": "24158974-e98e-4ba4-e505-7431e845f336"
+   },
+   "outputs": [],
+   "source": [
+    "#5. D.\n",
+    "print(\"R-squared value of this fit:\",round(metrics.r2_score(y_train,train_pred),3))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "II_PzASsiZ-m"
+   },
+   "source": [
+    "### 6.  It is time to put our model developed from the train data to the test!  Remember that test data set that had 30% of our data?  Let's run the model on our test data to get predictions, then match the predictions to the actual values from the data to see how effective our model is on \"new\" data.  We will see prediction, error estimate, and regression evaluation matrices.  One thing to look out for . . . something called overfitting - it's when the model learns the test data \"too well\" and can't predict well. Remember this term!"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "rZGAst0ViZ-m"
+   },
+   "source": [
+    "**Prediction using the lm model and our test data set**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "b-P05UdtiZ-n",
+    "outputId": "d6f4d7d1-6526-4d10-c78c-80502b9d8e80"
+   },
+   "outputs": [],
+   "source": [
+    "#6. A.\n",
+    "predictions = lm.predict(X_test)\n",
+    "print (\"Type of the predicted object:\", type(predictions))\n",
+    "print (\"Size of the predicted object:\", predictions.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "rksvynCLiZ-o"
+   },
+   "source": [
+    "**Scatter plot of predicted price and y_test set to see if the data fall on a 45 degree straight line - we are examining the model predictions on the test data and the actual values of price - very exciting!**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "WafmMUVWiZ-p",
+    "outputId": "7142b91c-16d2-4cc9-d57d-2e9f6e697db1",
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "#6. B.\n",
+    "plt.figure(figsize=(10,7))\n",
+    "plt.title(\"Actual vs. predicted house prices\",fontsize=25)\n",
+    "plt.xlabel(\"Actual test set house prices\",fontsize=18, color=\"red\")\n",
+    "plt.ylabel(\"Predicted house prices\", fontsize=18)\n",
+    "plt.scatter(x=y_test,y=predictions)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "O5y1-cAWiZ-q"
+   },
+   "source": [
+    "**More evaluation - the scatter plot looks pretty good!  Plotting histogram of the residuals i.e. predicted errors (expect a normally distributed pattern)**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "MoZc85LkiZ-q",
+    "outputId": "05ab95f1-d808-42dc-c4cc-5739117e8bec"
+   },
+   "outputs": [],
+   "source": [
+    "#6. C. \n",
+    "plt.figure(figsize=(10,7))\n",
+    "plt.title(\"Histogram of residuals to check for normality\",fontsize=25)\n",
+    "plt.xlabel(\"Residuals\",fontsize=18)\n",
+    "plt.ylabel(\"Kernel density\", fontsize=18)\n",
+    "sns.distplot([y_test-predictions])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "h89ZremjiZ-q"
+   },
+   "source": [
+    "**Scatter plot of residuals and predicted values (Homoscedasticity - The assumption of homoscedasticity (meaning “same variance”) is central to linear regression models.)**<p>Why do we care?</p><p><a href=\"https://www.statisticshowto.datasciencecentral.com/heteroscedasticity-simple-definition-examples/\">Heteroscedasticity and Homoscedasticity</a></p>\n",
+    "### This is important!  Take the time to review the article!"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "2pNdIk5kiZ-q",
+    "outputId": "61a0bfe0-9d0b-4fb6-a14d-2357cac3e67d"
+   },
+   "outputs": [],
+   "source": [
+    "#6. D. \n",
+    "plt.figure(figsize=(10,7))\n",
+    "plt.title(\"Residuals vs. predicted values plot (Homoscedasticity)\\n\",fontsize=25)\n",
+    "plt.xlabel(\"Predicted house prices\",fontsize=18)\n",
+    "plt.ylabel(\"Residuals\", fontsize=18)\n",
+    "plt.scatter(x=predictions,y=y_test-predictions)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "0Rsicwp_iZ-q"
+   },
+   "source": [
+    "**Regression evaluation metrices**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "vpTALmQYiZ-v",
+    "outputId": "69a176b3-bdbb-4730-be8f-78b974be0578"
+   },
+   "outputs": [],
+   "source": [
+    "#6. E.\n",
+    "print(\"Mean absolute error (MAE):\", metrics.mean_absolute_error(y_test,predictions))\n",
+    "print(\"Mean square error (MSE):\", metrics.mean_squared_error(y_test,predictions))\n",
+    "print(\"Root mean square error (RMSE):\", np.sqrt(metrics.mean_squared_error(y_test,predictions)))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "pss_Ix3BiZ-x",
+    "outputId": "e7be8fce-44e4-4495-ffe7-6ae7de5ba5fa"
+   },
+   "outputs": [],
+   "source": [
+    "#6. F. \n",
+    "print(\"R-squared value of predictions:\",round(metrics.r2_score(y_test,predictions),3))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "bgW0t90SiZ-y"
+   },
+   "source": [
+    "**R-square value** - the R-sqared value (#6. F) of predictions is .919\n",
+    "<p>Evaluating R-squared - the coefficient of Determination</p><p><a href=\"https://www.statisticshowto.datasciencecentral.com/probability-and-statistics/coefficient-of-determination-r-squared/\">R-squared</a></p>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "YZBKmbB1iZ-z"
+   },
+   "source": [
+    "QUESTIONS - ANSWER THE FOLLOWING QUESTIONS BY INSERTING MARKDOWN CELLS BELOW WITH THE QUESTION NUMBER AND THE ANSWER"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "ktecL5TciZ-z"
+   },
+   "source": [
+    "1.  What type of variables are acceptable for linear regression for the X variable(s)?  The Y variable?<br>\n",
+    "2.  What variable was discarded from the original dataset and why?\n",
+    "3.  What is the purpose of the training and test data set?\n",
+    "4.  What is overfitting and what can cause it?\n",
+    "5.  What is the purpose of plotting the variables to check for homoscedasticity?\n",
+    "6.  This model produced a coefficient of determination of .919.  Is this good?  What does it mean?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "uwvPIOdeiZ-z"
+   },
+   "source": [
+    "1."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "XVhmPPg_iZ-z"
+   },
+   "source": [
+    "2."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "rmMxj-cdiZ-0"
+   },
+   "source": [
+    "3."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "qzKEpYQmiZ-0"
+   },
+   "source": [
+    "4."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "p4buets2iZ-1"
+   },
+   "source": [
+    "5."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "9jwfFSlMiZ-2"
+   },
+   "source": [
+    "6."
+   ]
+  }
+ ],
+ "metadata": {
+  "colab": {
+   "name": "chapter15_16_HW5_Lab.ipynb",
+   "provenance": []
+  },
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}
