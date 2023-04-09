@@ -1,0 +1,1044 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "R_jNseCya7o9"
+   },
+   "source": [
+    "### Data Mining Spring 2023 Project:\n",
+    "#### Understanding and predicting Shark Presence in Near Shore Waters\n",
+    "#### Your Name:<br><br>\n",
+    "<p> This project has two deliverables:<br>\n",
+    "Deliverable 1:  Domain Understanding, Data Exploration and Preparation, Decision Trees and Random Forests (due 4/20)<br>\n",
+    "Deliverable 2:  Association Rules (due by start of Final Exam)\n",
+    "\n",
+    "#### Deliverable 1\n",
+    "<p>Follow the steps below which represent the Cross Industry Standard Process for Data Mining or CRISP-DM).  Each step will be represented in code (run the block of code) and there will be places for you to review a document (<font color=RED>REVIEW:</font>), watch a video (<font color=RED>VIDEO:</font>), answer questions (<font color=RED>QUESTION</font>:) and add code (<font color=RED>CODE:</font>).  You will turn in the completed notebook by the end of the day Wednesday 4/20.  For Deliverable 2, you will be asked to share your Deliverable 1 notebook (PDF) in a discussion forum. YOu will also complete a new notebook on Association Rules.</p>\n",
+    "<p>CRISP-DM Steps</p>\n",
+    "1. Problem Statement and Domain Understanding<br>\n",
+    "2. Input Libraries and Data<br>\n",
+    "3. Exploratory Data Analysis including Baseline for Evaluation<br>\n",
+    "4. Data Preprocessing for Modeling<br>\n",
+    "5. Modeling<br>\n",
+    "6. Evaluation<br>\n",
+    "7. Results and Future Work<br>\n",
+    "8. Citations<br>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "grQW3G8ga7pF"
+   },
+   "source": [
+    "### 1.  Problem Statement and Domain Understanding\n",
+    "<p>Problem Statement:  The purpose of this research is to improve the understanding of shark presence in near shore waters off of the coast of North and South Carolina,  Specifically, the research will investigate several years of summer time daily data including dates with documented shark attacks. Features involving weather, water, turtles, crabs and moon phases will be used in modeling to predict shark presence.</p>\n",
+    "<p>Domain Understanding:  Understanding the domain is an important first step of a data mining project.  We are exploring several years of data on shark attacks from the International Shark Attack File found at <a href=\"http://www.sharkattackfile.net/incidentlog.htm\">Global Shark Attack File</a>.</p>\n",
+    "In order to understand the domain:<br><br>\n",
+    "<font color=RED>REVIEW:</font>  <a href=\"https://github.com/AKDDResearch/Shark-Attack/blob/master/SAS%20Shark%20Research%20Presentation%20Final.pdf\">Developing a Recommender System for Shark Presence Along East Coast Beaches</a><br>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "jVK_2Qwfa7pH"
+   },
+   "source": [
+    "### 2. Input Libraries and Data"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "Qk9mncUva7pI"
+   },
+   "source": [
+    "#### 2. A.  Import Libraries\n",
+    "<p>We are importing pandas and numpy for working with data, sklearn for scikit-learn to easily perform modeling, matplotlib for plotting and datetime to work with the date attribute.</p><p>You can simply run this code</p>\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "8A3xtbhya7pJ"
+   },
+   "outputs": [],
+   "source": [
+    "#some code so those pesky warnings from deprecated code won't appear\n",
+    "import warnings\n",
+    "def fxn():\n",
+    "    warnings.warn(\"deprecated\", DeprecationWarning)\n",
+    "with warnings.catch_warnings():\n",
+    "    warnings.simplefilter(\"ignore\")\n",
+    "    fxn()\n",
+    "#the rest of the imports\n",
+    "#pandas for working with datasets\n",
+    "import pandas as pd\n",
+    "#numpy for working with arrays\n",
+    "import numpy as np\n",
+    "#seaborn for plotting and styling visualizations\n",
+    "import seaborn as sns\n",
+    "#matplotlib for additional customization\n",
+    "import matplotlib.pyplot as plt\n",
+    "#scikit-learn for preprocessing and modeling\n",
+    "from sklearn.model_selection import train_test_split, cross_val_score\n",
+    "from sklearn.preprocessing import StandardScaler\n",
+    "from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, r2_score, mean_squared_error\n",
+    "from sklearn.neighbors import KNeighborsClassifier\n",
+    "from sklearn.tree import DecisionTreeClassifier\n",
+    "from sklearn.ensemble import RandomForestClassifier\n",
+    "#datetime for working with dates\n",
+    "import datetime\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "n0V3sdpWa7pM"
+   },
+   "source": [
+    "<h4>2. B. Input Data, Review and Prepare Attributes</h4><br>\n",
+    "  <p>  NOTE:  This data has had transformations applied for the purpose of education and ease of understanding the process we use to apply data mining to predictive analysis.  Transformations include balancing the data set, discretization according to domain understanding and other methods, merging with other data sets according to date, and imputation or removal of null values by row or column. </p>\n",
+    "<p>Due to these changes, this particular data set should not be used for an actual production sytem for shark presence or attacks. For further studies, the data should be updated with additional years and rebuilt. It can be used, however, to gain an understanding of the problem in order to continue addressing the matter in a scientific manner.</p>\n",
+    "<p>We won't be using all of the attributes for our modeling, just a few of them. You can, however, use any of the attributes for your visualization.</p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "hTDewuVDa7pO",
+    "outputId": "26f06df8-73fd-4bbe-e644-03cdb54728a8"
+   },
+   "outputs": [],
+   "source": [
+    "# encoding is a statement of the kinds of characters used\n",
+    "# this data set includes some special characters\n",
+    "# read the csv file sharkdata.csv into bdf\n",
+    "# you can examine the csv file on the github site for class\n",
+    "bdf = pd.read_csv('https://raw.githubusercontent.com/catawba-data-mining/CIS-3902-Data-Mining/main/sharkdata.csv', encoding=\"ISO-8859-1\")\n",
+    "#let's take a look at the attributes and file size\n",
+    "bdf.info()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/",
+     "height": 299
+    },
+    "id": "yX6zr-L0a7pP",
+    "outputId": "057471d4-482b-49bf-bf38-4fe73ff76cba"
+   },
+   "outputs": [],
+   "source": [
+    "#let's take a look at the data\n",
+    "bdf.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "VcRxODf6a7pQ"
+   },
+   "source": [
+    "### 2. C. Transform certain variables to categories for better analysis <br>\n",
+    "<p>This is scary looking code but you can simply run it!</p>\n",
+    "<p>We are changing lots of attribures from type object (the way Python imports the non-numeric attribures) to type category.  We are keeping the full dataset in bdf at this point just in case you want to use some of these attribues in visualization!  They will work best as categories after this transformation.</p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "aeddBOmZa7pS",
+    "outputId": "f466a39f-254f-4342-ed78-c47ac9803158"
+   },
+   "outputs": [],
+   "source": [
+    "#change object type attributes - most of the discretized features - to categorical\n",
+    "#object type can be difficult to visualize and model\n",
+    "bdf[\"turtleexactdiscretizeSC\"] = bdf[\"turtleexactdiscretizeSC\"].astype('category')\n",
+    "bdf[\"TurtleexactdiscretizeNC\"] = bdf[\"TurtleexactdiscretizeNC\"].astype('category')\n",
+    "bdf[\"TurtleAttackActivityDiscretized\"] = bdf[\"TurtleAttackActivityDiscretized\"].astype('category')\n",
+    "bdf[\"Area\"] = bdf[\"Area\"].astype('category')\n",
+    "bdf[\"Attack\"] = bdf[\"Attack\"].astype('category')\n",
+    "bdf[\"Timeofattack\"] = bdf[\"Timeofattack\"].astype('category')\n",
+    "bdf[\"Beach\"] = bdf[\"Beach\"].astype('category')\n",
+    "bdf[\"DissolvedO2discretize\"] = bdf[\"DissolvedO2discretize\"].astype('category')\n",
+    "bdf[\"salinitydiscretize\"] = bdf[\"salinitydiscretize\"].astype('category')\n",
+    "bdf[\"turbiditydiscretize\"] = bdf[\"turbiditydiscretize\"].astype('category')\n",
+    "bdf[\"temperaturediscretize\"] = bdf[\"temperaturediscretize\"].astype('category')\n",
+    "bdf[\"precipitationdiscretize\"] = bdf[\"precipitationdiscretize\"].astype('category')\n",
+    "bdf[\"pressurediscretize\"] = bdf[\"pressurediscretize\"].astype('category')\n",
+    "bdf[\"windspeeddiscretize\"] = bdf[\"windspeeddiscretize\"].astype('category')\n",
+    "bdf[\"precipitationmvadiscretize\"] = bdf[\"precipitationmvadiscretize\"].astype('category')\n",
+    "bdf[\"CrabLandingsDisc\"] = bdf[\"CrabLandingsDisc\"].astype('category')\n",
+    "bdf[\"Direction\"] = bdf[\"Direction\"].astype('category')\n",
+    "bdf[\"DirectionDisc\"] = bdf[\"DirectionDisc\"].astype('category')\n",
+    "bdf[\"DirectionDiscInt\"] = bdf[\"DirectionDiscInt\"].astype('category')\n",
+    "bdf[\"MoonPhaseCat\"] = bdf[\"MoonPhase\"].astype('category')\n",
+    "bdf[\"MoonPhaseCatExtend\"] = bdf[\"MoonPhaseIntExtend\"].astype('category')\n",
+    "#change attack and moonphase cat to codes to help with scatter matrix visualization\n",
+    "#MoonPhaseCat is the actual MoonPhase as a string\n",
+    "#MoonPhaseCatExtended is the Extended MoonPhase\n",
+    "#0 is Quarter moons, 1 is wan gibb and wax cres, 2 is wax gibb and wan cres, 3 is Full and New\n",
+    "#DirectionDiscInt is the Wind Direction discretized\n",
+    "#NE = 1, E = 2, SE = 3, S = 4, W = 5, SW = 6\n",
+    "bdf[\"AttackCat\"] = bdf[\"Attack\"].cat.codes\n",
+    "bdf[\"MoonPhaseCatExtendCodes\"] = bdf[\"MoonPhaseCatExtend\"].cat.codes\n",
+    "bdf[\"DirectionDiscIntCodes\"] = bdf[\"DirectionDiscInt\"].cat.codes\n",
+    "#fix date time\n",
+    "bdf[\"Date\"] = bdf[\"Date\"].astype('category')\n",
+    "format_str = '%d/%m/%Y' # The format\n",
+    "bdf[\"Date\"] = bdf[\"Date\"].apply(pd.to_datetime)\n",
+    "#datetime.datetime.strptime(bdf[\"Date\"], format_str)\n",
+    "#print info again on data frame and attributes\n",
+    "bdf.info()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/",
+     "height": 386
+    },
+    "id": "KZfk0sNUa7pV",
+    "outputId": "2a97de15-bef5-40c2-ab39-55447cd80017"
+   },
+   "outputs": [],
+   "source": [
+    "#just run this code too\n",
+    "# are you curious about what we have now?\n",
+    "# let's take a look at the first few rows\n",
+    "bdf.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "PPl13mZFa7pW"
+   },
+   "source": [
+    "<font color=RED>QUESTION:  </font>Notice that many attributes are represented by the raw value and a discretized value.  For example, turbidity is represented in \"Turbidity\" and \"turbiditydiscretize\".  What is the purpose of a discretized attribute like \"turtleexactdiscretizeSC\" which is built from \"TurtleExactCountSC\"? Place your answer in this markdown block.<br>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "bgfsprgva7pX"
+   },
+   "source": [
+    "#### 2 C. Create \"df\" dataframe from \"bdf\" to only include the attributes needed for modeling.\n",
+    "<p>Use \"bdf\" for visualizations, etc. as it includes lots of data including discretized, categorical variables and date.  Use \"df\" for the attributes we are using for decision trees, random forest and Knn modeling.</p><p>Note:  This is a way to change the data for different types of analysis.  You can build df to include the features you want. Notice how we do not include two perfectly correlated variables in the same df dataset for modling such as  \"Salinity\" and \"salinitydiscretize\". We will use the numeric data in its origional form for modeling.</p>\n",
+    "<p>You can simply run this code but do pay attention to the attributes we will use for modeling.</p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "IkmX55_Ja7pY",
+    "outputId": "082b98ef-5b08-43a4-8242-c30dd54200e8"
+   },
+   "outputs": [],
+   "source": [
+    "#df will include numeric attributes and attack as the target attribute\n",
+    "#for supervised learning\n",
+    "#we are leaving the turtles and crabs out for now, also temperature (it's always hot in summer) and more!\n",
+    "df = bdf[[\"AttackCat\", \"MoonPhaseCatExtendCodes\", \"StationPressure\",\n",
+    "          \"WindSpeed\", \"Salinity\", \"Turbidity\", \n",
+    "          \"DissolvedO2\", \"DirectionDiscIntCodes\"]]\n",
+    "#take a look\n",
+    "df.info()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "PlksI80Qa7pZ"
+   },
+   "outputs": [],
+   "source": [
+    "# examine first 15 records\n",
+    "df.head(15)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "rs1ylV_Ya7pZ"
+   },
+   "source": [
+    "### 3. Exploratory Data Analysis"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "ufwjXWn4a7pa"
+   },
+   "source": [
+    "#### 3. A. Establish a baseline measure for evaluation"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "b9R6tW1Ma7pb"
+   },
+   "source": [
+    "Establish a baseline - we want to do better than the baseline otherwise why not just keep the baseline for your predictions?  A baseline is typically an easily calculated value that often represents a simple average or some measure that is currently in use to make predictions.  Our baseline is the overall percent of attacks for the data that is represented.  This shows if you always pick \"No\" for whether a shark will be in near shore waters with this data set, you will be accurate 62% of the time."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "2-31SMX5a7pb",
+    "outputId": "1203197f-22b0-4d92-8c82-a31d16d3f181"
+   },
+   "outputs": [],
+   "source": [
+    "#we are going to calculate a simple percentage of attack = no or 0\n",
+    "#remember this data set has been balanced due to shark attack\n",
+    "#being a rare event\n",
+    "df[\"AttackCat\"].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "KUB4H4Tna7pc",
+    "outputId": "08ec7c1e-88a9-4e22-b114-3f1326cec56a"
+   },
+   "outputs": [],
+   "source": [
+    "randomAcc = df[\"AttackCat\"].value_counts().max() / df[\"AttackCat\"].value_counts().sum()\n",
+    "randomAcc = round(randomAcc * 100, 2)\n",
+    "print(\"Accuracy: {randomAcc}%\".format(randomAcc = randomAcc))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "dMTpwoM4a7pd"
+   },
+   "source": [
+    "Our predictions need to be better than the baseline measure of accuracy for predicting whether or not a shark will be in near shore water."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "AsEHGhLxa7pe"
+   },
+   "source": [
+    "#### 3. B.  Exploratory Data Analysis"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "LYAaUHlEa7pf"
+   },
+   "source": [
+    "Describing a data frame with df.describe() shows statistics for numeric variables including quartiles."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/",
+     "height": 300
+    },
+    "id": "dP_hBn6Na7pg",
+    "outputId": "4a598dae-fcfe-4b70-e066-6140aa36e298"
+   },
+   "outputs": [],
+   "source": [
+    "df.describe().transpose()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "so7vaW9Ea7pg"
+   },
+   "source": [
+    "#### 3. C. Scatter plot matrix:  This powerful visualization can answer the following questions:<br>\n",
+    "<p>Run the code and examine the results - they will appear after the long display of information on an array used in construction of the scatter matrix - you can disregard this.</p>\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/",
+     "height": 1000
+    },
+    "id": "EAyUAb7ea7ph",
+    "outputId": "5dd55dfd-470b-49f2-fd1b-ff63435553cd"
+   },
+   "outputs": [],
+   "source": [
+    "#we are going to set up some colors for attack = 0 (no attack) or 1 (attack)\n",
+    "attack_colors = {0:'blue', 1:'red'}\n",
+    "pd.plotting.scatter_matrix(df.loc[:,\"MoonPhaseCatExtendCodes\":\"DirectionDiscIntCodes\"],figsize=(30,30),grid=True,\n",
+    "                           marker='o', c= df['AttackCat'].map(attack_colors))\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "cTiB2IQ9a7ph"
+   },
+   "source": [
+    "<font color=RED>QUESTION:  </font> <p>Are there any scatter plots that look interesting?  </p>\n",
+    "<p> Look for:\n",
+    "<p>\n",
+    "•Are there any pair-wise relationships between different variables? And if there are relationships, what is the nature of these relationships?<br>\n",
+    "•Are there any outliers in the dataset?<br>\n",
+    "•Is there any evidence of clustering by groups present in the dataset on the basis of a particular variable?</p>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "V9bEAQJga7ph"
+   },
+   "source": [
+    "<font color=RED>CODE:  </font>Add four interesting visualizations of your choice. Include markdown describing what you have learned about the data from your visualizations. You can use the df or bdf dataset at this point.<br><br>Here is a resource with examples that may give you some ideas for visualization:  <a href=\"https://elitedatascience.com/python-seaborn-tutorial#:~:text=The%20Ultimate%20Python%20Seaborn%20Tutorial%3A%20Gotta%20Catch%20%E2%80%98Em,it%20all%20together.%20...%2010%20Pok%C3%A9dex%20%28mini-gallery%29.%20\">Using Seaborn for Visualization</a><br>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "ba8_j1vta7pi"
+   },
+   "source": [
+    "### Markdown for Visualization 1: (explain what you learn from the visualizaiton)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "tFhu-sM6a7pi"
+   },
+   "outputs": [],
+   "source": [
+    "# Code for Visualization 1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "zwDNPeoza7pi"
+   },
+   "source": [
+    "### Markdown for Visualization 2: (explain what you learn from the visualizaiton)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "TmlebXmla7pj"
+   },
+   "outputs": [],
+   "source": [
+    "# Code for Visualization 2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "PasHZAG8a7pj"
+   },
+   "source": [
+    "### Markdown for Visualization 3: (explain what you learn from the visualizaiton)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "2vWt8wNca7pk"
+   },
+   "outputs": [],
+   "source": [
+    "# Code for Visualization 3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "qbkIJB4la7pl"
+   },
+   "source": [
+    "### Markdown for Visualization 4: (explain what you learn from the visualizaiton)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "lg0CUAjBa7pl"
+   },
+   "outputs": [],
+   "source": [
+    "# Code for Visualization 4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "i9t4fRCea7pm"
+   },
+   "source": [
+    "### 4.  Data Preprocessing for Modeling\n",
+    "<p>Our first example will explore a combination of categorical and numeric features in the dataset.  The numeric features have not been scaled which will handle the different ranges of values present in the continuous variables.  We will be using a powerful feature of scikit-learn, the standard scaler, to scale the  variables.  The Standard Scaler that we will use is the z-score scaler so 0 means the mean, -1 and +1 is one standard deviation from the mean, etc.  The lower the value the further away from the mean in a negative way, the higher the value the further away from the mean in a positive way.  We will then explore three models:  Knn, Decision Trees and Random Forest and compare the accuracy of the models. We will also use train and test data with a default train test split.</p>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "DwYVT9rda7pm"
+   },
+   "source": [
+    "#### 4. A. Setting up the models<br><p>You can simply run this code, we are getting some variables set up so we can run our three machine learning models. </p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "FesGOYqDa7pm"
+   },
+   "outputs": [],
+   "source": [
+    "# setting y to the target variable attack yes or 1, no or 0\n",
+    "y = df[\"AttackCat\"]\n",
+    "# dropping the target variable from X\n",
+    "# you can also drop other variables\n",
+    "X = df.drop([\"AttackCat\"], axis=1)\n",
+    "\n",
+    "# setting the parameters for the models\n",
+    "knn = KNeighborsClassifier(n_neighbors=3)\n",
+    "rfc = RandomForestClassifier()\n",
+    "dt = DecisionTreeClassifier(random_state=0)\n",
+    "\n",
+    "clNames = [\"KNN\", \"Random Forests\", \"Decision Trees\"]\n",
+    "classifiers = [knn,rfc,dt]\n",
+    "classifierScores = []"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "KnYFDKiIa7pn"
+   },
+   "source": [
+    "#### 4. B. Numeric Feature Scaling with the Standard Scaler (can improve accuracy)<br><p>You can simply run this code - we are scaling the numeric variables around the mean (z scores) so the ranges will all be the same.  We are excluding the Moon Phases and Wind Direction because we want their actual codes, not a z-score representation.</p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "EF_iFFhQa7pn"
+   },
+   "outputs": [],
+   "source": [
+    "# set scaler to StandardScaler\n",
+    "scaler = StandardScaler()\n",
+    "# save a feature that is not included, add it back at end\n",
+    "name_var = X['MoonPhaseCatExtendCodes']\n",
+    "name_var2 = X['DirectionDiscIntCodes']\n",
+    "X.drop(columns=['MoonPhaseCatExtendCodes','DirectionDiscIntCodes'])\n",
+    "# get numeric data in num_X\n",
+    "num_X = X.select_dtypes(exclude=['category'])\n",
+    "\n",
+    "# update the cols with their normalized or scaled values\n",
+    "X[num_X.columns] = scaler.fit_transform(num_X)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/",
+     "height": 206
+    },
+    "id": "JeEtEkxoa7po",
+    "outputId": "287b1f68-3896-414f-f93a-b34b5680cd56"
+   },
+   "outputs": [],
+   "source": [
+    "#add MoonPhaseCatExtendDisc and then let's take a look at X\n",
+    "X['MoonPhaseCatExtendCodes']=name_var\n",
+    "X['DirectionDiscIntCodes']=name_var2\n",
+    "X.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "BhPY5RxTa7po"
+   },
+   "source": [
+    "#### 4.C. For Knn, Changing Categorical Features to Numbers\n",
+    "<p>We have to convert categorical features to a numerical value for Knn.  In order to encode this data, you could map each value to a number. e.g. Overcast:0, Rainy:1, and Sunny:2.</p>\n",
+    "<p>\n",
+    "This process is known as label encoding, and sklearn conveniently will do this for you using Label Encoder.<p>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "jrm2m5sHa7po"
+   },
+   "source": [
+    "#### A refresher on moon phases and Wind Direction:  back to domain knowledge! (CRISP-DM is a cyclical process)<br>\n",
+    "<p>At Full and New Moon, the effect on tides is the greatest and causes \"high tide\".  Neap tides are when the tides are decreasing after full and new moon; Spring tides are when the tides are rising toward full and new moon phases.</p>\n",
+    "<p>A feature that is already encoded is Moon Phase Cat Extend Codes:  0 - quarter moons, 1 - Neap Tides, 2 - Spring Tides, 3 - Full and New Moon</p>\n",
+    "<p>Another features is Wind Direction - 1 - NE, 2 - E, 3 - SE, 4 - S, 5 - W, 6 - SW.  Surf fishers say the fishing is best with south and westerly winds.</p>\n",
+    "<p>From <a href=\"https://sciencing.com/effects-moon-phases-ocean-tides-8435550.html\">Sciencing.Com Moon Phases and Ocean</a></p>\n",
+    "<p>You can just run this code;Sci-kit learn does all the work for you!</p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/",
+     "height": 206
+    },
+    "id": "Q0P0N0FRa7pp",
+    "outputId": "273ec609-e481-472b-bc2c-25eaa599692c"
+   },
+   "outputs": [],
+   "source": [
+    "# Label Encoding with Sci-kit learn\n",
+    "from sklearn import preprocessing\n",
+    "# creating le LabelEncoder\n",
+    "le = preprocessing.LabelEncoder()\n",
+    "# transforming just the categorical and int or non scaled attributes (do not do this on the numeric attributes)\n",
+    "X['MoonPhaseCatExtendCodes'] = le.fit_transform(X['MoonPhaseCatExtendCodes'])\n",
+    "X['DirectionDiscIntCodes'] = le.fit_transform(X['DirectionDiscIntCodes'])\n",
+    "X.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "EZJBevHza7pp"
+   },
+   "source": [
+    "#### 4. C. Create the Train-Test-Split<br><p>You can run this code - we have learned about train-test-split for building and evaluating models with our previous class work.</p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "E8VAaDkKa7pp"
+   },
+   "outputs": [],
+   "source": [
+    "# convert string variables to One Hot Encoding if needed for certain models\n",
+    "# such as Association Rules (not in this Deliverable)\n",
+    "# X = pd.get_dummies(X)\n",
+    "\n",
+    "# build train test split for modeling\n",
+    "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "vxU5y7UNa7pp"
+   },
+   "source": [
+    "### 5.  Modeling\n",
+    "<p>We will explore three models:  Knn, Decision Trees and Random Forest and compare the accuracy of the models. We will be using supervised machine learning with the train-test-split data</p>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "C6Shb_Cza7pq"
+   },
+   "source": [
+    "#### 5.  A. Knn or K Nearest Neighbors\n",
+    "<p>KNN requires scaling of data because KNN uses the Euclidean distance between two data points to find nearest neighbors. Euclidean distance is sensitive to magnitudes. The features with high magnitudes will weight more than features with low magnitudes. KNN also is not suitable for large dimensional data. We need to convert the categorical data to </p>\n",
+    "<p><font color=RED>VIDEO: </font>Watch the video to learn more about Knn for predictive models.</p>\n",
+    "<p><a href=\"https://youtu.be/4HKqjENq9OU\">Understanding Knn</a></p>\n",
+    "<p><a href=\"https://www.datacamp.com/community/tutorials/k-nearest-neighbor-classification-scikit-learn#:~:text=KNN%20requires%20scaling%20of%20data%20because%20KNN%20uses,KNN%20also%20not%20suitable%20for%20large%20dimensional%20data\">Datacamp:  KNN Tutorial (short)</a></p>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "C0MiwG3qa7pq"
+   },
+   "source": [
+    "#### 5. B. Knn Modeling<br>\n",
+    "<p>Run the four code blocks below for KNN Modeling - the last shows the accuracy.  Remember our baseline!</p>\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "RR5QNg2va7pr",
+    "outputId": "2f562d51-a412-4573-f5e8-391f6b813acf"
+   },
+   "outputs": [],
+   "source": [
+    "# We will start with k nearest neighbors = 3\n",
+    "# build the knn model with the training data\n",
+    "knn = KNeighborsClassifier(n_neighbors=3)\n",
+    "knn.fit(X_train, y_train)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "ERJl_k1ma7pr",
+    "outputId": "aa2deaa5-ee31-470b-8e1a-25463fa6c3a8"
+   },
+   "outputs": [],
+   "source": [
+    "# Prediction, print confusion matrix for the test data\n",
+    "kPred = knn.predict(X_test)\n",
+    "print(confusion_matrix(y_test, kPred))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "_rLgpUe1a7pr",
+    "outputId": "549a5012-6b9b-43c4-e82c-7a6d284ded75"
+   },
+   "outputs": [],
+   "source": [
+    "# print classification report\n",
+    "print(classification_report(y_test,kPred))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "uFgsT8fNa7ps",
+    "outputId": "f5e328fb-d74b-4596-ca90-ccbf774a09c5"
+   },
+   "outputs": [],
+   "source": [
+    "# print accuracy\n",
+    "knnAcc = accuracy_score(y_test,kPred) * 100\n",
+    "knnAcc = round(knnAcc, 2)\n",
+    "print(\"Accuracy: {knnAcc}%\".format(knnAcc=knnAcc))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "0w47_T5Ya7ps"
+   },
+   "source": [
+    "#### 5. C. Random Forest<br>\n",
+    "<p>Run the four code blocks below for Random Forest Modeling - the last shows the accuracy. See if we are improving over the Knn model for prediction!</p>\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "Pnp0LjKLa7ps",
+    "outputId": "e0f01855-f1bc-450a-9c49-2b6b3c347d45"
+   },
+   "outputs": [],
+   "source": [
+    "rfc = RandomForestClassifier()\n",
+    "rfc.fit(X_train, y_train)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "TFhTPTHpa7ps",
+    "outputId": "bdb2b518-e274-4da8-af44-b61660b7cbae"
+   },
+   "outputs": [],
+   "source": [
+    "rfcPred = rfc.predict(X_test)\n",
+    "print(confusion_matrix(y_test, rfcPred))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "97j_m1LOa7pt",
+    "outputId": "1be2a46e-89a9-402e-e27c-f6c6376143ad"
+   },
+   "outputs": [],
+   "source": [
+    "print(classification_report(y_test,rfcPred))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "A5ZlBhNFa7pt",
+    "outputId": "55ae7265-b086-451d-d463-297e9f7754b0"
+   },
+   "outputs": [],
+   "source": [
+    "rfAcc = accuracy_score(y_test,rfcPred) * 100\n",
+    "rfAcc = round(rfAcc, 2)\n",
+    "print(\"Accuracy: {rfAcc}%\".format(rfAcc=rfAcc))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "7HIx0olma7pu"
+   },
+   "source": [
+    "#### 5. D. Decision Trees<br>\n",
+    "<p>Run the three code blocks below for Decision Tree Modeling - the last shows the accuracy. See if we are improving over the Knn and Random Forest models for prediction! The last code block visualizes the tree.</p>\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "V69_Znsna7pu",
+    "outputId": "821168d9-8749-4d99-946c-ab78b840758c"
+   },
+   "outputs": [],
+   "source": [
+    "from sklearn import tree\n",
+    "dt = tree.DecisionTreeClassifier(random_state=0, criterion='entropy')\n",
+    "dt.fit(X_train, y_train)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "id": "fclwR7FAa7pv",
+    "outputId": "2bcf1a0b-5954-4dcb-bc42-f60a940b1889"
+   },
+   "outputs": [],
+   "source": [
+    "dtPred = dt.predict(X_test)\n",
+    "\n",
+    "dtAcc = accuracy_score(y_test,dtPred) * 100\n",
+    "dtAcc = round(dtAcc, 2)\n",
+    "print(\"Accuracy: {dtAcc}%\".format(dtAcc=dtAcc))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/",
+     "height": 1000
+    },
+    "id": "XCNWQ9Tta7pv",
+    "outputId": "eaeb3165-6c93-4ced-c050-677329c43ed6"
+   },
+   "outputs": [],
+   "source": [
+    "# let's visualize the decision tree\n",
+    "dt_feature_names = list(X.columns)\n",
+    "dt_target_names = [str(s) for s in y.unique()]\n",
+    "fig = plt.figure(figsize=(25,20))\n",
+    "_ = tree.plot_tree(dt, \n",
+    "                   feature_names=dt_feature_names,  \n",
+    "                   class_names=dt_target_names,\n",
+    "                   filled=True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "O06LT30Sa7pv"
+   },
+   "source": [
+    "<font color=RED>QUESTION:</font><p>Some researchers are studying the effect of wind on shark presence in near shore waters.  This is a relatively new area of research. Take a look at what they are saying: <a href=\"https://abc7.com/shark-attack-attacks-sharks-tagging/5388879/#:~:text=They%20said%20sea%20breeze%20at%20the%20sites%20of,white%20and%20others%20head%20up%20the%20Eastern%20Seaboard\">Does the sea breeze make shark attacks more likely?</a></p>\n",
+    "<p>Another resource:  <a href=\"https://www.yahoo.com/gma/meet-2-scientists-trying-forecast-104935603.html?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuYmluZy5jb20vc2VhcmNoP3E9RHIuK0dyZWcrU2tvbWFsK2FuZCtOYXRpb25hbCtXZWF0aGVyK1NlcnZpY2UrbWV0ZW9yb2xvZ2lzdCtKb2UrTWVyY2hhbnQmc3JjPUlFLVNlYXJjaEJveCZGT1JNPUlFU1I0Tg&guce_referrer_sig=AQAAAJjrmPNw7ZiCXSsVFmG7PYyxb3WaHU0MFNzSPhE-60Xgzc6-V-mHo4HRP1yMGkKKvnVHAxhwj7ZL-3hd9JDcKvdlsUf9k0oIEp5xEpKEGxyo8CEOPpF-ADJkan8ajzUIjj8f-lF8srjWtrGA-fP7HeLGZpZ98RabEdokIuerouIJ\">Sea Breeze and Shark Attacks</a></p>\n",
+    "<p>Based on our work, what do you think?  Does wind play a role in shark presence, even attacks, in near shore waters off of the coast of North and Scuth Carolina (our data)?</p>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "8c_aE5Ssa7pw"
+   },
+   "source": [
+    "<font color=RED>QUESTION: </font> <p>What other variables seem to play a role?  Going by the decision tree or your earlier visualizations, research features or variables of interest and document your findings.</p>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "fgE82LrJa7px"
+   },
+   "source": [
+    "#### 6. Evaluation<br>\n",
+    "<p>Let's compare the models.</p>\n",
+    "<p>Then try a prediction to see if the decision tree model predicts 1 for shark presence, or 0 for no shark presence!</p><p>Run the first code block and second code block.  You can change the variables for the second code block - remember numeric variables are scaled so 0 is close to the mean, negative numbers are lower than the mean, positive numbers are above the mean - standard deviaion units so -3 and +3 are extremely low and high.</p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "AJ2XaWsXa7px"
+   },
+   "outputs": [],
+   "source": [
+    "classifiers = [\"KNN\", \"Random Forests\", \"Decision Trees\"]\n",
+    "accuracies = [knnAcc, rfAcc, dtAcc]\n",
+    "x = np.arange(len(classifiers))\n",
+    "ytickLabels = [\"0%\",\"10%\",\"20%\",\"30%\",\"40%\",\"50%\",\"60%\",\"70%\",\"80%\",\"90%\",\"100%\"]\n",
+    "yticks = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]\n",
+    "plt.figure(figsize=(10, 15))\n",
+    "plt.bar(x, accuracies, align='center', alpha=0.5)\n",
+    "plt.xticks(x, classifiers)\n",
+    "plt.yticks(yticks, ytickLabels)\n",
+    "plt.ylabel('Accuracy')\n",
+    "plt.title('Classifier Accuracy')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "NbrgcyP9a7px"
+   },
+   "outputs": [],
+   "source": [
+    "#let's try a prediction\n",
+    "#we will input a sample MoonPhaseCatExtendCodes, StationPressure\n",
+    "#WindSpeed, Salinity, Turbidity, DissolvedO2, DirectionDiscIntCodes\n",
+    "# you can change the values of the variables\n",
+    "moon = 3\n",
+    "stationpressure = 1.0\n",
+    "windspeed = 2\n",
+    "salinity = 1\n",
+    "turbidity = 0\n",
+    "dissolved02 = 0\n",
+    "winddirection = 8\n",
+    "# dt.predict uses the decision tree model that has been built previously\n",
+    "prediction = dt.predict([[moon,stationpressure,windspeed,salinity,turbidity,dissolved02,winddirection]])\n",
+    "# let's see what the prediction is - 1 is yes to shark presence, 0 is mo\n",
+    "print(\"The prediction is \", prediction)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "p8hxgZeCa7px"
+   },
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "colab": {
+   "name": "Project Deliverable 1 Detecting Shark Presence.ipynb",
+   "provenance": []
+  },
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}
