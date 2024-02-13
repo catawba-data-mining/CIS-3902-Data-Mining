@@ -23,7 +23,7 @@ Getting Started:<br>
 [ back to Table of Contents](#toc)
 
 #### Reference:<br>
-TEXTBOOKS:  The supplemental text and exercises for the Spring 2023 class are provided by UC Berkeley (Data 8 and Data 100):  
+TEXTBOOKS:  The supplemental text and exercises for the Spring 2024 class (outside of Zybooks) are provided by UC Berkeley (Data 8 and Data 100):  
 <br>
 Data 8 Text: <br>
 https://www.inferentialthinking.com/chapters/intro
