@@ -1,4 +1,4 @@
-## SPRING 2023 Zybook Data Mining
+## SPRING 2024 Zybook Data Mining
 This site supports coding examples and homework for Introduction to Data Mining (CIS 3902) at Catawba College.<br>
 
 Getting Started:<br>
