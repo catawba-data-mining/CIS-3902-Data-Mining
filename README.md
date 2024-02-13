@@ -14,7 +14,7 @@ Getting Started:<br>
 <br>
 <a name="toc"></a>
 
-1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter1_homework1_lab.ipynb">HW: Week 5 HW and Lab</a><br>
+1. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter1_homework1_lab.ipynb">HW: Week 5 HW and Lab</a><br>
 2. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter15_16_HW5_Lab.ipynb">HW: Linear Regression Lab</a><br>
 3. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/homework7_decision_trees.ipynb">HW: Decision Trees Lab</a><br>
 4. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Spring_23_Project.ipynb">HW: Project</a><br>
