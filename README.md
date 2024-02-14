@@ -27,8 +27,9 @@ TEXTBOOKS:  The supplemental text and exercises for the Spring 2024 class (outsi
 <br>
 Data 8 Text: <br>
 https://www.inferentialthinking.com/chapters/intro
-Computataional and Inferential Thinking (also available through creative commons license, UC Berkeley)
-
+Computatational and Inferential Thinking (also available through creative commons license, UC Berkeley)<br>
+Data 8 Notebooks: <a href="https://github.com/data-8/textbook/tree/64b20f0452a31545d9fbc8f34a9e86035cd56e45/notebooks">Notebooks for the UC Berkeley Data 8 text</a>
+<br>
 Data 100 Text:
 Principles and Techniques of Data Science
 http://www.textbook.ds100.org/intro.html
