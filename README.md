@@ -15,7 +15,7 @@ Getting Started:<br>
 <a name="toc"></a>
 
 1. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Chapter_1_HW.ipynb">HW: Thursday Feb 13 2024 - classwork and Lab</a><br>
-2. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter06_examples.ipynb">Data Wrangling Examples</a><br>
+2. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch06_examples.ipynb">Data Wrangling Examples</a><br>
 3. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/06_data_wrangling.ipynb">Data Wrangling Lab</a><br>
 
 
