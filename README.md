@@ -17,8 +17,7 @@ Getting Started:<br>
 1. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Chapter_1_HW.ipynb">HW: Thursday Feb 13 2024 - classwork and Lab</a><br>
 2. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch06_examples.ipynb">Data Wrangling Examples</a><br>
 3. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/06_data_wrangling.ipynb">Data Wrangling Lab</a><br>
-
-
+4. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/CreditCardDataStandardizationNormalization.ipynb">Zybooks Chapter 4 Data Standardization (Z Score) and Normalization (0 to 1 scale) exercise</a>
 
 [ back to Table of Contents](#toc)
 
