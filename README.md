@@ -1,11 +1,11 @@
 ## Data-Mining
-This site supports coding examples and homework for Introduction to Data Mining (CIS 3902)at Catawba College.<br>
+This site supports coding examples and homework for Introduction to Data Mining (CIS 3902) at Catawba College.<br>
 Getting Started:<br>
 1.  Create and verify a Github Account.<br>
 2.  Sign in to Github and access <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/README.md">Catawba Data Mining on Github</a>.<br>
 3.  Follow instructions in Blackboard for the weekly assignments for class on https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/README.md.<br>
 
-## SPRING 2023 Zybook Data Mining
+## SPRING 2024 Zybook Data Mining
 
 ### Markdown Tutorial <a href="https://agea.github.io/tutorial.md/">Markdown Tutorial</a>
 <br>
