@@ -16,7 +16,8 @@ Getting Started:<br>
 <a name="tocb"></a>
 ### Table of Contents  (chapter content will be released each week)
 ### Click on the link to access the assignment<br>
-1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/ch01_examples.ipynb">Assignment 1 Mining the Classics</a>
+1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Chapter_1_HW.ipynb">Assignment 1 Mining the Classics</a>
+2. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Chapter_1_HW.ipynb">Assignment 1 Mining the Classics</a>
 
 
 <br>
@@ -24,9 +25,9 @@ Getting Started:<br>
 ### The End
 
 
-#### SPRING 2021 Class
+#### Other Resources
 
-TEXTBOOKS:  The texts for the class are provided by UC Berkeley:  
+OPTIONAL TEXTBOOKS:  These reference texts for the class are provided by UC Berkeley:  
 
 Data 8 Text: 
 https://www.inferentialthinking.com/chapters/intro
@@ -38,7 +39,7 @@ http://www.textbook.ds100.org/intro.html
 
 
 <a name="toc"></a>
-#### Table of Contents  (chapter content will be released each week)
+#### Examples from UC Berkeley and Catawba College CIS 3902 for reference and examples
 #### Data 8 and Data 100<br>
 1. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter1_homework1_lab.ipynb">Chapter 1 Lab and HW 1</a>
 2. <a href="https://github.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/chapter2_homework2_lab.ipynb">Chapter 2 Lab and HW 2</a>
