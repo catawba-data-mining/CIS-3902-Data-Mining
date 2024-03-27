@@ -18,8 +18,7 @@ Getting Started:<br>
 ### Click on the link to access the assignment<br>
 1. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Chapter_1_HW.ipynb">Assignment 1 Mining the Classics</a>
 2. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/NYC_Open_Data_Data_Visualization.ipynb">Assignment 2 Exploring Visualization NYC Fire Data</a>
-
-
+3. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Customer_Segmentation_Using_Clustering.ipynb">Assignment 3 Customer Segmentation Using Clustering: Mall Data</a>
 <br>
 
 ### The End
