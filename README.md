@@ -21,8 +21,8 @@ Getting Started:<br>
 3. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Customer_Segmentation_Using_Clustering_with_output.ipynb">Assignment 3 Customer Segmentation Using Clustering: Mall Data</a>
 4. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/knn.ipynb">K-nearest neighbor clustering</a>
 5. <a href="https://githubtocolab.com/catawba-data-mining/CIS-3902-Data-Mining/blob/main/Spring24_project.ipynb">Project</a>
-<br>
-https://colab.research.google.com/github/catawba-data-mining/CIS-3902-Data-Mining/blob/main/knn.ipynb
+6. <a href="https://colab.research.google.com/github/catawba-data-mining/CIS-3902-Data-Mining/blob/main/knn.ipynb">K Nearest Neighbor Example</a>
+7. <a href="https://colab.research.google.com/github/catawba-data-mining/CIS-3902-Data-Mining/blob/main/pycaret_multiclass_classification.ipynb">Pycaret Multiclass Classification</a>
 
 ### The End
 
